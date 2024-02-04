@@ -23,7 +23,6 @@ export function getSentenceToxicity(sentence: string | string[]): Promise<Catego
         toxicity.load(DEFAULT_THRESHOLD, TOXICITY_LABELS).then(model => {
             model.classify(sentence).then(predictions => {
                 resolve(predictions.map(prediction => {
-                    console.log(prediction)
                     return {
                         label: prediction.label,
                         results: prediction.results.map(result => parseResult(result.probabilities, result.match))
