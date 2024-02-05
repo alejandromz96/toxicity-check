@@ -7,13 +7,3 @@ export enum InferenceCategories {
     Threat = "threat",
     Toxicity = "toxicity"
 }
-
-export type InferenceProbability = {
-    probabilities : Float32Array,
-    match: boolean
-}
-
-export type CategoryInference = {
-    label: string,
-    results: InferenceProbability[]
-}

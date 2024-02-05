@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     if(inference.data && inference.data.length > 0){
-      alert(JSON.stringify(inference.data));
+      console.log(inference.data);
     }
   }, [inference?.data])
 

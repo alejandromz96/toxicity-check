@@ -1,23 +1,16 @@
-import { InferenceCategories } from "~/server/models/sentenceInference.interface";
-import type {CategoryInference, InferenceProbability }from "~/server/models/sentenceInference.interface";
 import * as toxicity from '@tensorflow-models/toxicity';
+import { InferenceCategories } from '~/server/lib/enums/inferenceCategories.enum';
+import type { CategoryInference } from '~/server/lib/interfaces/categoryInference.interface';
+import type { InferenceProbability } from '~/server/lib/interfaces/inferenceProbability.interface';
 
 // If the inference of the model is superior to 0.8 ( 80% )
 // the results will be returned as a match. 
 const DEFAULT_THRESHOLD = 0.8;
-const TOXICITY_LABELS = [
-    InferenceCategories.SevereToxicity,
-    InferenceCategories.Obscene,
-    InferenceCategories.Insult,
-    InferenceCategories.IdentityAttack,
-    InferenceCategories.SexualExplicit,
-    InferenceCategories.Threat,
-    InferenceCategories.Toxicity,
-];
+const TOXICITY_LABELS = Object.values(InferenceCategories);
 
 export function getSentenceToxicity(sentence: string | string[]): Promise<CategoryInference[]> {
     return new Promise((resolve, reject) => {
-        if(sentence.length === 0 || !sentence){
+        if(!sentence?.length){
             resolve([]);
         }
         toxicity.load(DEFAULT_THRESHOLD, TOXICITY_LABELS).then(model => {
