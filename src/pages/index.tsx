@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import React from 'react'
 import { ToxicTextComponent } from '~/components/toxic-text-component/ToxicTextComponent'
 
 import { api } from '~/utils/api'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default function Home() {
+export default function Home(): React.JSX.Element {
     const hello = api.post.hello.useQuery({ text: 'from tRPC' })
 
     return (
@@ -44,6 +45,7 @@ export default function Home() {
                         </Link>
                     </div>
                     <p className="text-2xl text-white">{hello.data ? hello.data.greeting : 'Loading tRPC query...'}</p>
+                    {/* eslint-disable-next-line no-console */}
                     <ToxicTextComponent asyncSubmit={console.log} loading={false} />
                 </div>
             </main>

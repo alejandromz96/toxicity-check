@@ -6,17 +6,17 @@ type Props = {
     loading: boolean // flag to prevent user for entering inputs before the app is ready
 }
 
-export const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props) => {
+export const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): React.JSX.Element => {
     const [currentInput, setCurrentInput] = useState('')
 
-    const submitCurrentInput = () => {
+    function submitCurrentInput(): void {
         if (currentInput) {
             asyncSubmit(currentInput)
             setCurrentInput('')
         }
     }
 
-    const onEnterSubmitInput = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    function onEnterSubmitInput(ev: React.KeyboardEvent<HTMLInputElement>): void {
         if (ev.key === 'Enter') {
             submitCurrentInput()
         }
@@ -45,8 +45,10 @@ export const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props) => {
     )
 }
 
-const Loading = () => (
-    <div className="animate-spin">
-        <CogIcon className="w-10 h-10" />
-    </div>
-)
+function Loading(): React.JSX.Element {
+    return (
+        <div className="animate-spin">
+            <CogIcon className="w-10 h-10" />
+        </div>
+    )
+}
