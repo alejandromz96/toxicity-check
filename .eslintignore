@@ -1,0 +1,15 @@
+.DS_Store
+node_modules
+/build
+/package
+.env
+.env.*
+!.env.example
+.vercel 
+/dist
+.next
+/src/generated
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+*.d.ts
