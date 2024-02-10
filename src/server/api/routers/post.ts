@@ -8,11 +8,9 @@ let post = {
 }
 
 export const postRouter = createTRPCRouter({
-    hello: publicProcedure.input(z.object({ text: z.string() })).query(({ input }) => {
-        return {
-            greeting: `Hello ${input.text}`,
-        }
-    }),
+    hello: publicProcedure.input(z.object({ text: z.string() })).query(({ input }) => ({
+        greeting: `Hello ${input.text}`,
+    })),
 
     create: publicProcedure.input(z.object({ name: z.string().min(1) })).mutation(async ({ input }) => {
         // simulate a slow db call
@@ -22,16 +20,12 @@ export const postRouter = createTRPCRouter({
         return post
     }),
 
-    getSentenceInference: publicProcedure.input(z.object({ sentence: z.string() })).mutation(async ({ input }) => {
-        return await getSentenceToxicity(input.sentence)
-    }),
+    getSentenceInference: publicProcedure
+        .input(z.object({ sentence: z.string() }))
+        .mutation(async ({ input }) => getSentenceToxicity(input.sentence)),
 
     getSentencesInference: publicProcedure
         .input(z.object({ sentence: z.array(z.string()) }))
-        .mutation(async ({ input }) => {
-            return await getSentenceToxicity(input.sentence)
-        }),
-    getLatest: publicProcedure.query(() => {
-        return post
-    }),
+        .mutation(async ({ input }) => getSentenceToxicity(input.sentence)),
+    getLatest: publicProcedure.query(() => post),
 })

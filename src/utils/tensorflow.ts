@@ -18,16 +18,14 @@ export function getSentenceToxicity(sentence: string | string[]): Promise<Catego
             .then((model) => {
                 model
                     .classify(sentence)
-                    .then((predictions) => {
+                    .then((predictions: CategoryInference[]) => {
                         resolve(
-                            predictions.map((prediction) => {
-                                return {
-                                    label: prediction.label,
-                                    results: prediction.results.map((result) =>
-                                        parseResult(result.probabilities, result.match)
-                                    ),
-                                }
-                            })
+                            predictions.map((prediction) => ({
+                                label: prediction.label,
+                                results: prediction.results.map((result) =>
+                                    parseResult(result.probabilities, result.match)
+                                ),
+                            }))
                         )
                     })
                     .catch(reject)
