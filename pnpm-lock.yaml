@@ -67,6 +67,7 @@ devDependencies:
     eslint-config-next:
         specifier: ^14.0.4
         version: 14.1.0(eslint@8.56.0)(typescript@5.3.3)
+<<<<<<< HEAD
     eslint-config-prettier:
         specifier: ^8.6.0
         version: 8.10.0(eslint@8.56.0)
@@ -76,6 +77,8 @@ devDependencies:
     lint-staged:
         specifier: ^13.2.2
         version: 13.3.0
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     postcss:
         specifier: ^8.4.31
         version: 8.4.33
@@ -834,6 +837,7 @@ packages:
             uri-js: 4.4.1
         dev: true
 
+<<<<<<< HEAD
     /ansi-escapes@5.0.0:
         resolution:
             {
@@ -844,6 +848,8 @@ packages:
             type-fest: 1.4.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /ansi-regex@5.0.1:
         resolution:
             {
@@ -1192,6 +1198,7 @@ packages:
             supports-color: 7.2.0
         dev: true
 
+<<<<<<< HEAD
     /chalk@5.3.0:
         resolution:
             {
@@ -1200,6 +1207,8 @@ packages:
         engines: { node: ^12.17.0 || ^14.13 || >=16.0.0 }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /chokidar@3.5.3:
         resolution:
             {
@@ -1218,6 +1227,7 @@ packages:
             fsevents: 2.3.3
         dev: true
 
+<<<<<<< HEAD
     /cli-cursor@4.0.0:
         resolution:
             {
@@ -1239,6 +1249,8 @@ packages:
             string-width: 5.1.2
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /client-only@0.0.1:
         resolution:
             {
@@ -1263,6 +1275,7 @@ packages:
             }
         dev: true
 
+<<<<<<< HEAD
     /colorette@2.0.20:
         resolution:
             {
@@ -1278,6 +1291,8 @@ packages:
         engines: { node: '>=16' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /commander@4.1.1:
         resolution:
             {
@@ -1636,6 +1651,7 @@ packages:
             - supports-color
         dev: true
 
+<<<<<<< HEAD
     /eslint-config-prettier@8.10.0(eslint@8.56.0):
         resolution:
             {
@@ -1648,6 +1664,8 @@ packages:
             eslint: 8.56.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /eslint-import-resolver-node@0.3.9:
         resolution:
             {
@@ -1943,6 +1961,7 @@ packages:
         engines: { node: '>=0.10.0' }
         dev: true
 
+<<<<<<< HEAD
     /eventemitter3@5.0.1:
         resolution:
             {
@@ -1968,6 +1987,8 @@ packages:
             strip-final-newline: 3.0.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /fast-deep-equal@3.1.3:
         resolution:
             {
@@ -2146,6 +2167,7 @@ packages:
             hasown: 2.0.0
         dev: true
 
+<<<<<<< HEAD
     /get-stream@6.0.1:
         resolution:
             {
@@ -2154,6 +2176,8 @@ packages:
         engines: { node: '>=10' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /get-symbol-description@1.0.0:
         resolution:
             {
@@ -2340,6 +2364,7 @@ packages:
             function-bind: 1.1.2
         dev: true
 
+<<<<<<< HEAD
     /human-signals@4.3.1:
         resolution:
             {
@@ -2357,6 +2382,8 @@ packages:
         hasBin: true
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /ignore@5.3.1:
         resolution:
             {
@@ -2516,6 +2543,7 @@ packages:
         engines: { node: '>=8' }
         dev: true
 
+<<<<<<< HEAD
     /is-fullwidth-code-point@4.0.0:
         resolution:
             {
@@ -2524,6 +2552,8 @@ packages:
         engines: { node: '>=12' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /is-generator-function@1.0.10:
         resolution:
             {
@@ -2612,6 +2642,7 @@ packages:
             call-bind: 1.0.5
         dev: true
 
+<<<<<<< HEAD
     /is-stream@3.0.0:
         resolution:
             {
@@ -2620,6 +2651,8 @@ packages:
         engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /is-string@1.0.7:
         resolution:
             {
@@ -2851,6 +2884,7 @@ packages:
             }
         dev: true
 
+<<<<<<< HEAD
     /lint-staged@13.3.0:
         resolution:
             {
@@ -2894,6 +2928,8 @@ packages:
             wrap-ansi: 8.1.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /locate-path@6.0.0:
         resolution:
             {
@@ -2911,6 +2947,7 @@ packages:
             }
         dev: true
 
+<<<<<<< HEAD
     /log-update@5.0.1:
         resolution:
             {
@@ -2925,6 +2962,8 @@ packages:
             wrap-ansi: 8.1.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /loose-envify@1.4.0:
         resolution:
             {
@@ -2952,6 +2991,7 @@ packages:
             yallist: 4.0.0
         dev: true
 
+<<<<<<< HEAD
     /merge-stream@2.0.0:
         resolution:
             {
@@ -2959,6 +2999,8 @@ packages:
             }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /merge2@1.4.1:
         resolution:
             {
@@ -2978,6 +3020,7 @@ packages:
             picomatch: 2.3.1
         dev: true
 
+<<<<<<< HEAD
     /mimic-fn@2.1.0:
         resolution:
             {
@@ -2994,6 +3037,8 @@ packages:
         engines: { node: '>=12' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /minimatch@3.1.2:
         resolution:
             {
@@ -3133,6 +3178,7 @@ packages:
         engines: { node: '>=0.10.0' }
         dev: true
 
+<<<<<<< HEAD
     /npm-run-path@5.2.0:
         resolution:
             {
@@ -3143,6 +3189,8 @@ packages:
             path-key: 4.0.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /object-assign@4.1.1:
         resolution:
             {
@@ -3254,6 +3302,7 @@ packages:
             wrappy: 1.0.2
         dev: true
 
+<<<<<<< HEAD
     /onetime@5.1.2:
         resolution:
             {
@@ -3274,6 +3323,8 @@ packages:
             mimic-fn: 4.0.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /optionator@0.9.3:
         resolution:
             {
@@ -3343,6 +3394,7 @@ packages:
         engines: { node: '>=8' }
         dev: true
 
+<<<<<<< HEAD
     /path-key@4.0.0:
         resolution:
             {
@@ -3351,6 +3403,8 @@ packages:
         engines: { node: '>=12' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /path-parse@1.0.7:
         resolution:
             {
@@ -3391,6 +3445,7 @@ packages:
         engines: { node: '>=8.6' }
         dev: true
 
+<<<<<<< HEAD
     /pidtree@0.6.0:
         resolution:
             {
@@ -3400,6 +3455,8 @@ packages:
         hasBin: true
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /pify@2.3.0:
         resolution:
             {
@@ -3739,6 +3796,7 @@ packages:
             supports-preserve-symlinks-flag: 1.0.0
         dev: true
 
+<<<<<<< HEAD
     /restore-cursor@4.0.0:
         resolution:
             {
@@ -3750,6 +3808,8 @@ packages:
             signal-exit: 3.0.7
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /reusify@1.0.4:
         resolution:
             {
@@ -3758,6 +3818,7 @@ packages:
         engines: { iojs: '>=1.0.0', node: '>=0.10.0' }
         dev: true
 
+<<<<<<< HEAD
     /rfdc@1.3.1:
         resolution:
             {
@@ -3765,6 +3826,8 @@ packages:
             }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /rimraf@3.0.2:
         resolution:
             {
@@ -3892,6 +3955,7 @@ packages:
             object-inspect: 1.13.1
         dev: true
 
+<<<<<<< HEAD
     /signal-exit@3.0.7:
         resolution:
             {
@@ -3899,6 +3963,8 @@ packages:
             }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /signal-exit@4.1.0:
         resolution:
             {
@@ -3915,6 +3981,7 @@ packages:
         engines: { node: '>=8' }
         dev: true
 
+<<<<<<< HEAD
     /slice-ansi@5.0.0:
         resolution:
             {
@@ -3926,6 +3993,8 @@ packages:
             is-fullwidth-code-point: 4.0.0
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /source-map-js@1.0.2:
         resolution:
             {
@@ -3941,6 +4010,7 @@ packages:
         engines: { node: '>=10.0.0' }
         dev: false
 
+<<<<<<< HEAD
     /string-argv@0.3.2:
         resolution:
             {
@@ -3949,6 +4019,8 @@ packages:
         engines: { node: '>=0.6.19' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /string-width@4.2.3:
         resolution:
             {
@@ -4052,6 +4124,7 @@ packages:
         engines: { node: '>=4' }
         dev: true
 
+<<<<<<< HEAD
     /strip-final-newline@3.0.0:
         resolution:
             {
@@ -4060,6 +4133,8 @@ packages:
         engines: { node: '>=12' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /strip-json-comments@3.1.1:
         resolution:
             {
@@ -4267,6 +4342,7 @@ packages:
         engines: { node: '>=10' }
         dev: true
 
+<<<<<<< HEAD
     /type-fest@1.4.0:
         resolution:
             {
@@ -4275,6 +4351,8 @@ packages:
         engines: { node: '>=10' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /typed-array-buffer@1.0.0:
         resolution:
             {
@@ -4502,6 +4580,7 @@ packages:
             }
         dev: true
 
+<<<<<<< HEAD
     /yaml@2.3.1:
         resolution:
             {
@@ -4510,6 +4589,8 @@ packages:
         engines: { node: '>= 14' }
         dev: true
 
+=======
+>>>>>>> 90cecd368453148bed431fc39a4e05528a043318
     /yaml@2.3.4:
         resolution:
             {
