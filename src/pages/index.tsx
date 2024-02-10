@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { api } from '~/utils/api'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function Home() {
     const hello = api.post.hello.useQuery({ text: 'from tRPC' })
 

@@ -6,8 +6,8 @@
     "scripts": {
         "build": "next build",
         "dev": "next dev",
-        "lint": "next lint",
         "start": "next start",
+        "lint": "prettier --config ./.prettierrc --check --ignore-path ./.prettierignore .  && eslint -c ./.eslintrc.cjs --ignore-path ./.eslintignore .",
         "format": "prettier --config ./.prettierrc --write --ignore-path ./.prettierignore ."
     },
     "dependencies": {
@@ -37,7 +37,10 @@
         "prettier": "^3.2.4",
         "prettier-plugin-tailwindcss": "^0.5.7",
         "tailwindcss": "^3.3.5",
-        "typescript": "^5.1.6"
+        "typescript": "^5.1.6",
+        "eslint-config-prettier": "^8.6.0",
+        "husky": ">=6",
+        "lint-staged": "^13.2.2"
     },
     "ct3aMetadata": {
         "initVersion": "7.26.0"

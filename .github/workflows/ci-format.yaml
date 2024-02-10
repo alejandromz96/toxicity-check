@@ -1,4 +1,4 @@
-name: Run format in PRs
+name: Run linter and format in PRs
 
 on:
     pull_request:
@@ -10,11 +10,13 @@ jobs:
         steps:
             - uses: actions/checkout@v2
               with:
-                submodules: recursive
+                  submodules: recursive
             - uses: pnpm/action-setup@v2
               with:
-                version: 8.5.1
+                  version: 8.5.1
             - name: Install dependencies
               run: pnpm install
             - name: Run Format
               run: pnpm format
+            - name: Run linter
+              run: pnpm lint
