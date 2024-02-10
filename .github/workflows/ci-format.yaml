@@ -1,0 +1,22 @@
+name: Run linter and format in PRs
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+
+jobs:
+    linter:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  submodules: recursive
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8.5.1
+            - name: Install dependencies
+              run: pnpm install
+            - name: Run Format
+              run: pnpm format
+            - name: Run linter
+              run: pnpm lint

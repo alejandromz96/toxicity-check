@@ -1,0 +1,20 @@
+build
+functions/**
+.vercel_build_output/**
+.vercel/**
+src/**/*.d.ts
+dist
+.next
+generated
+
+# Repository
+/.vscode/**
+
+# Common files and folders
+/node_modules/**
+
+# ESLint configuration and files
+!.eslintrc.cjs
+
+# Environment variables
+.env
