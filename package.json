@@ -6,7 +6,6 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
     "start": "next start",
     "lint": "prettier --config ./.prettierrc --check --ignore-path ./.prettierignore .  && eslint -c ./.eslintrc.cjs --ignore-path ./.eslintignore .",
     "format": "prettier --config ./.prettierrc --write --ignore-path ./.prettierignore ."
