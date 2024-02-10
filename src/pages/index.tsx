@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Link from "next/link";
-import { ToxicTextComponent } from "~/components/toxic-text-component/ToxicTextComponent";
+import Head from 'next/head'
+import Link from 'next/link'
+import { ToxicTextComponent } from '~/components/toxic-text-component/ToxicTextComponent'
 
 import { api } from '~/utils/api'
 
@@ -44,7 +44,7 @@ export default function Home() {
                         </Link>
                     </div>
                     <p className="text-2xl text-white">{hello.data ? hello.data.greeting : 'Loading tRPC query...'}</p>
-                    <ToxicTextComponent asyncSubmit={console.log} loading={false}/>
+                    <ToxicTextComponent asyncSubmit={console.log} loading={false} />
                 </div>
             </main>
         </>
