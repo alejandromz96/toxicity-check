@@ -1,11 +1,27 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
 
 import { api } from '~/utils/api'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default function Home() {
+export default function Home(): React.JSX.Element {
     const hello = api.post.hello.useQuery({ text: 'from tRPC' })
+
+    const [inputValue, setInputValue] = useState('')
+
+    const inference = api.post.getSentenceInference.useMutation()
+
+    function inferenceSentence(): void {
+        inference.mutate({ sentence: inputValue })
+    }
+
+    useEffect(() => {
+        if (inference.data && inference.data.length > 0) {
+            // eslint-disable-next-line no-console
+            console.log(inference.data)
+        }
+    }, [inference?.data])
 
     return (
         <>
@@ -43,6 +59,17 @@ export default function Home() {
                         </Link>
                     </div>
                     <p className="text-2xl text-white">{hello.data ? hello.data.greeting : 'Loading tRPC query...'}</p>
+                </div>
+                <div className="container flex flex-col items-center justify-center gap-12 px-6">
+                    <input
+                        className="block rounded w-full px-4"
+                        onChange={(event) => {
+                            setInputValue(event.target.value)
+                        }}
+                    ></input>
+                    <button type="submit" className="bg-white rounded-sm px-4" onClick={inferenceSentence}>
+                        Inference
+                    </button>
                 </div>
             </main>
         </>
