@@ -1,4 +1,4 @@
 export type InferenceProbability = {
-    probabilities : Float32Array,
+    probabilities: Float32Array
     match: boolean
 }

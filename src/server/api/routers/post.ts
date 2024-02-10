@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
-import { getSentenceToxicity } from "~/utils/tensorflow";
+import { createTRPCRouter, publicProcedure } from '~/server/api/trpc'
+import { getSentenceToxicity } from '~/utils/tensorflow'
 
 let post = {
     id: 1,
@@ -22,17 +22,15 @@ export const postRouter = createTRPCRouter({
         return post
     }),
 
-  getSentenceInference: publicProcedure
-  .input(z.object({sentence: z.string()}))
-  .mutation(async ({input}) => {
-    return await getSentenceToxicity(input.sentence);
-  }),
+    getSentenceInference: publicProcedure.input(z.object({ sentence: z.string() })).mutation(async ({ input }) => {
+        return await getSentenceToxicity(input.sentence)
+    }),
 
-  getSentencesInference: publicProcedure
-  .input(z.object({sentence: z.array(z.string())}))
-  .mutation(async ({input}) => {
-    return await getSentenceToxicity(input.sentence);
-  }),
+    getSentencesInference: publicProcedure
+        .input(z.object({ sentence: z.array(z.string()) }))
+        .mutation(async ({ input }) => {
+            return await getSentenceToxicity(input.sentence)
+        }),
     getLatest: publicProcedure.query(() => {
         return post
     }),

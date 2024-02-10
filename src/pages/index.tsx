@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import Head from 'next/head'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import { api } from '~/utils/api'
 
@@ -8,15 +8,15 @@ import { api } from '~/utils/api'
 export default function Home() {
     const hello = api.post.hello.useQuery({ text: 'from tRPC' })
 
-    const [inputValue, setInputValue] = useState("");
-  
-    const inference = api.post.getSentenceInference.useMutation();
-    const inferenceSentence = () => inference.mutate({sentence : inputValue})
-  
+    const [inputValue, setInputValue] = useState('')
+
+    const inference = api.post.getSentenceInference.useMutation()
+    const inferenceSentence = () => inference.mutate({ sentence: inputValue })
+
     useEffect(() => {
-      if(inference.data && inference.data.length > 0){
-        console.log(inference.data);
-      }
+        if (inference.data && inference.data.length > 0) {
+            console.log(inference.data)
+        }
     }, [inference?.data])
 
     return (
@@ -57,11 +57,16 @@ export default function Home() {
                     <p className="text-2xl text-white">{hello.data ? hello.data.greeting : 'Loading tRPC query...'}</p>
                 </div>
                 <div className="container flex flex-col items-center justify-center gap-12 px-6">
-            <input className="block rounded w-full px-4" onChange={(event => {
-              setInputValue(event.target.value);
-            })}></input>
-            <button type="submit" className="bg-white rounded-sm px-4" onClick={inferenceSentence}>Inference</button>
-          </div>
+                    <input
+                        className="block rounded w-full px-4"
+                        onChange={(event) => {
+                            setInputValue(event.target.value)
+                        }}
+                    ></input>
+                    <button type="submit" className="bg-white rounded-sm px-4" onClick={inferenceSentence}>
+                        Inference
+                    </button>
+                </div>
             </main>
         </>
     )
