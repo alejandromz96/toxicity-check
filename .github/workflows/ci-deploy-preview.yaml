@@ -13,6 +13,8 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8.5.1
+      - name: logs
+        run: echo ${{ secrets.GH_TOKEN }}
       - name: Install modules
         run: pnpm install
       - uses: actions/setup-node@v3
