@@ -22,9 +22,11 @@ export const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): Rea
         }
     }
 
-    return loading ? (
-        <Loading />
-    ) : (
+    if (loading) {
+        return <Loading />
+    }
+
+    return (
         <div className="flex items-center w-full px-2 py-2 rounded-lg bg-white">
             <input
                 className="block mx-2 p-2.5 w-full text-sm rounded-lg"
