@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import Crono from '~/components/crono'
 
 import { api } from '~/utils/api'
 
@@ -70,6 +71,9 @@ export default function Home(): React.JSX.Element {
                     <button type="submit" className="bg-white rounded-sm px-4" onClick={inferenceSentence}>
                         Inference
                     </button>
+                </div>
+                <div>
+                    <Crono visible={true} duration={100000} refreshInterval={50} />
                 </div>
             </main>
         </>
