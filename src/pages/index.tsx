@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import ResultsComponent from '~/components/resultsComponent'
+import type { CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
 
 import { api } from '~/utils/api'
 
@@ -9,19 +11,10 @@ export default function Home(): React.JSX.Element {
     const hello = api.post.hello.useQuery({ text: 'from tRPC' })
 
     const [inputValue, setInputValue] = useState('')
+    const [inputPassedToResults, setInputPassedToResults] = useState('')
 
     const inference = api.post.getSentenceInference.useMutation()
-
-    function inferenceSentence(): void {
-        inference.mutate({ sentence: inputValue })
-    }
-
-    useEffect(() => {
-        if (inference.data && inference.data.length > 0) {
-            // eslint-disable-next-line no-console
-            console.log(inference.data)
-        }
-    }, [inference?.data])
+    const inferenceSentence = (sentence: string): Promise<CategoryInference[]> => inference.mutateAsync({ sentence })
 
     return (
         <>
@@ -60,6 +53,11 @@ export default function Home(): React.JSX.Element {
                     </div>
                     <p className="text-2xl text-white">{hello.data ? hello.data.greeting : 'Loading tRPC query...'}</p>
                 </div>
+                <ResultsComponent
+                    sentence={inputPassedToResults}
+                    setSentence={(string) => setInputPassedToResults(string)}
+                    inferenceCallback={inferenceSentence}
+                />
                 <div className="container flex flex-col items-center justify-center gap-12 px-6">
                     <input
                         className="block rounded w-full px-4"
@@ -67,7 +65,11 @@ export default function Home(): React.JSX.Element {
                             setInputValue(event.target.value)
                         }}
                     ></input>
-                    <button type="submit" className="bg-white rounded-sm px-4" onClick={inferenceSentence}>
+                    <button
+                        type="submit"
+                        className="bg-white rounded-sm px-4"
+                        onClick={() => setInputPassedToResults(inputValue)}
+                    >
                         Inference
                     </button>
                 </div>
