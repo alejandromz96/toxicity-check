@@ -32,9 +32,8 @@ import { ZodError } from 'zod'
  *
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
-const createInnerTRPCContext = (/* _opts: CreateContextOptions */) => {
-    return {}
-}
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const createInnerTRPCContext = (/* _opts: CreateContextOptions */) => ({})
 
 /**
  * This is the actual context you will use in your router. It will be used to process every request
@@ -42,10 +41,8 @@ const createInnerTRPCContext = (/* _opts: CreateContextOptions */) => {
  *
  * @see https://trpc.io/docs/context
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const createTRPCContext = (/* _opts: CreateNextContextOptions */) => {
-    return createInnerTRPCContext(/* {} */)
-}
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
+export const createTRPCContext = (/* _opts: CreateNextContextOptions */) => createInnerTRPCContext(/* {} */)
 
 /**
  * 2. INITIALIZATION
