@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, type JSX } from 'react'
 import Head from 'next/head'
 
 import { ToxicTextComponent } from '~/components/toxic-text-component/ToxicTextComponent'
 import { api } from '~/utils/api'
+import WizardStateComponent from '~/components/home/WizardStateComponent'
 
-type HomeComponentType = 'presentation' | 'challenge' | 'results'
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default function Home() {
-    const [currentComponent, setCurrentComponent] = useState<HomeComponentType>('presentation')
-
+const Home = (): JSX.Element => {
     const [inputValue, setInputValue] = useState('')
 
     const inference = api.post.getSentenceInference.useMutation()
@@ -33,39 +29,8 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-gray-400">
-                {currentComponent === 'presentation' && (
-                    <div className="flex flex-col items-center">
-                        <h1 className="text-2xl">PROJECT PRESENTATION</h1>
-                        <button
-                            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-                            onClick={(): void => setCurrentComponent('challenge')}
-                        >
-                            START CHALLENGE
-                        </button>
-                    </div>
-                )}
-                {currentComponent === 'challenge' && (
-                    <div className="flex flex-col items-center">
-                        <h1 className="text-2xl">CHALLENGE</h1>
-                        <button
-                            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-                            onClick={(): void => setCurrentComponent('results')}
-                        >
-                            END CHALLENGE
-                        </button>
-                    </div>
-                )}
-                {currentComponent === 'results' && (
-                    <div className="flex flex-col items-center">
-                        <h1 className="text-2xl">RESULTS</h1>
-                        <button
-                            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-                            onClick={(): void => setCurrentComponent('presentation')}
-                        >
-                            RETURN TO PRESENTATION
-                        </button>
-                    </div>
-                )}
+                <WizardStateComponent />
+                {/* eslint-disable-next-line no-console */}
                 <ToxicTextComponent asyncSubmit={console.log} loading={false} />
                 <div className="container flex flex-col items-center justify-center gap-12 px-6">
                     <input
@@ -82,3 +47,5 @@ export default function Home() {
         </>
     )
 }
+
+export default Home
