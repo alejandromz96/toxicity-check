@@ -1,1 +1,1 @@
-export type WizardStateType = 'presentation' | 'challenge' | 'results';
+export type WizardStateType = 'presentation' | 'challenge' | 'results'
