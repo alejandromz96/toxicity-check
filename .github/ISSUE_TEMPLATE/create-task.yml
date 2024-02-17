@@ -1,0 +1,21 @@
+---
+name: New task
+description: Create a new work task
+title: '[Task]: '
+
+body:
+    - type: markdown
+      attributes:
+          value: '## Creating a task'
+    - type: markdown
+      attributes:
+          value: |
+              This form should be used by official maintainers only to create new work tasks.
+
+    - type: textarea
+      id: description
+      attributes:
+          label: Task description
+          description: Describe the task that needs to be completed.
+      validations:
+          required: true
