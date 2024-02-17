@@ -1,6 +1,7 @@
 import { useState, type JSX } from 'react'
 
 import type { WizardStateType } from '~/lib/types/wizardState.type'
+import { Loader } from '.'
 
 // TODO: Use real components (to remove)
 interface ComponentsProps {
@@ -20,6 +21,7 @@ const PresentationComponent = ({ changeWizardState }: ComponentsProps): JSX.Elem
 const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">CHALLENGE</h1>
+        <Loader />
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
             onClick={(): void => changeWizardState()}
