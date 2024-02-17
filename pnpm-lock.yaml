@@ -5,6 +5,9 @@ settings:
     excludeLinksFromLockfile: false
 
 dependencies:
+    '@heroicons/react':
+        specifier: ^2.1.1
+        version: 2.1.1(react@18.2.0)
     '@t3-oss/env-nextjs':
         specifier: ^0.7.1
         version: 0.7.3(typescript@5.3.3)(zod@3.22.4)
@@ -173,6 +176,17 @@ packages:
             }
         engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
         dev: true
+
+    /@heroicons/react@2.1.1(react@18.2.0):
+        resolution:
+            {
+                integrity: sha512-JyyN9Lo66kirbCMuMMRPtJxtKJoIsXKS569ebHGGRKbl8s4CtUfLnyKJxteA+vIKySocO4s1SkTkGS4xtG/yEA==,
+            }
+        peerDependencies:
+            react: '>= 16'
+        dependencies:
+            react: 18.2.0
+        dev: false
 
     /@humanwhocodes/config-array@0.11.14:
         resolution:
