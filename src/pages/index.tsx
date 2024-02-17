@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { ToxicTextComponent } from '~/components/toxic-text-component/ToxicTextComponent'
 import React, { useEffect, useState } from 'react'
 
 import { api } from '~/utils/api'
@@ -59,6 +60,8 @@ export default function Home(): React.JSX.Element {
                         </Link>
                     </div>
                     <p className="text-2xl text-white">{hello.data ? hello.data.greeting : 'Loading tRPC query...'}</p>
+                    {/* eslint-disable-next-line no-console */}
+                    <ToxicTextComponent asyncSubmit={console.log} loading={false} />
                 </div>
                 <div className="container flex flex-col items-center justify-center gap-12 px-6">
                     <input
