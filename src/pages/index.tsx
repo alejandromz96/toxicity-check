@@ -1,9 +1,9 @@
 import { useEffect, useState, type JSX } from 'react'
 import Head from 'next/head'
 
-import { ToxicTextComponent } from '~/components/toxic-text-component/ToxicTextComponent'
+import { ToxicTextComponent } from '~/components/ToxicTextComponent'
 import { api } from '~/utils/api'
-import WizardStateComponent from '~/components/home/WizardStateComponent'
+import WizardStateComponent from '~/components/WizardStateComponent'
 
 const Home = (): JSX.Element => {
     const [inputValue, setInputValue] = useState('')
