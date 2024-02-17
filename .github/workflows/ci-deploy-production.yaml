@@ -1,8 +1,5 @@
 name: Production CI - Deploy
-on:
-    push:
-        branches:
-            - main
+on: [pull_request]
 jobs:
     deploy:
         runs-on: ubuntu-latest
@@ -34,6 +31,7 @@ jobs:
                   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
                   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
                   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+                  ALIAS_DOMAINS: toxicitycheck.vercel.app
                   PRODUCTION: true
                   GITHUB_DEPLOYMENT_ENV: Production
                   FORCE: true
