@@ -1,60 +1,68 @@
 import { useState, type JSX } from 'react'
 
-import type { WizardStateType } from '~/models/home'
+import type { WizardStateType } from '~/lib/types/wizardState.type'
 
 // TODO: Use real components (to remove)
 interface ComponentsProps {
-    onClick: (state: WizardStateType) => void
+    changeWizardState: () => void
 }
-const PresentationComponent = ({ onClick }: ComponentsProps): JSX.Element => (
+const PresentationComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">PROJECT PRESENTATION</h1>
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => onClick('challenge')}
+            onClick={(): void => changeWizardState()}
         >
             START CHALLENGE
         </button>
     </>
 )
-const ChallengeComponent = ({ onClick }: ComponentsProps): JSX.Element => (
+const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">CHALLENGE</h1>
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => onClick('results')}
+            onClick={(): void => changeWizardState()}
         >
             END CHALLENGE
         </button>
     </>
 )
-const ResultsComponent = ({ onClick }: ComponentsProps): JSX.Element => (
+const ResultsComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">RESULTS</h1>
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => onClick('presentation')}
+            onClick={(): void => changeWizardState()}
         >
             RETURN TO PRESENTATION
         </button>
     </>
 )
 
-const WizardStateComponent = (): JSX.Element => {
-    const [currentState, setWizardState] = useState<WizardStateType>('presentation')
+const stateComponents: Record<WizardStateType, ({ changeWizardState }: ComponentsProps) => JSX.Element> = {
+    challenge: ChallengeComponent,
+    results: ResultsComponent,
+    presentation: PresentationComponent,
+}
 
-    const renderBody = (): JSX.Element => {
-        switch (currentState) {
+const WizardStateComponent = (): JSX.Element => {
+    const [currentWizardState, setCurrentWizardState] = useState<WizardStateType>('presentation')
+
+    const changeWizardState = (): void => {
+        switch (currentWizardState) {
             case 'challenge':
-                return <ChallengeComponent onClick={setWizardState} />
+                return setCurrentWizardState('results')
             case 'results':
-                return <ResultsComponent onClick={setWizardState} />
+                return setCurrentWizardState('presentation')
             default:
-                return <PresentationComponent onClick={setWizardState} />
+                return setCurrentWizardState('challenge')
         }
     }
 
-    return <div className="flex flex-col items-center">{renderBody()}</div>
+    return (
+        <div className="flex flex-col items-center">{stateComponents[currentWizardState]({ changeWizardState })}</div>
+    )
 }
 
 export default WizardStateComponent
