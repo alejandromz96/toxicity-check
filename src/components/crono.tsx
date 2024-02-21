@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
 type Props = {
-    visible: boolean
     duration: number // duration in milis ( less than 24 hours )
     callbackOnEnd?: () => void
     refreshInterval: number
 }
 
-export default function Crono({ visible, duration, callbackOnEnd, refreshInterval = 10 }: Props): React.JSX.Element {
+export default function Crono({ duration, callbackOnEnd, refreshInterval = 10 }: Props): React.JSX.Element {
     const [running, setRunning] = useState(true)
     const [currentTime, setCurrentTime] = useState(duration)
 
@@ -31,7 +30,7 @@ export default function Crono({ visible, duration, callbackOnEnd, refreshInterva
     }
 
     useEffect(() => {
-        if (visible && running) {
+        if (running) {
             setTimeout(() => {
                 if (currentTime - refreshInterval <= 0) {
                     setCurrentTime(0)
@@ -46,7 +45,7 @@ export default function Crono({ visible, duration, callbackOnEnd, refreshInterva
             setCurrentTime(0)
             setRunning(false)
         }
-    }, [callbackOnEnd, currentTime, duration, refreshInterval, running, visible])
+    }, [callbackOnEnd, currentTime, duration, refreshInterval, running])
 
     return <div className="w-100 h-100 px-10 py-2 m-2">{getTimeBox()}</div>
 }
