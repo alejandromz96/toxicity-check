@@ -11,7 +11,7 @@ interface ChallengeComponentHistory {
     sentence: string
     inferences: CategoryInference[]
     response: string
-    time: string,
+    time: string
     matchCount: number
 }
 
@@ -37,7 +37,7 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
     const [history, setHistory] = useState<ChallengeComponentHistory[]>([])
     const [modelReady, setModelReady] = useState(false)
     const [currentTime, setCurrentTime] = useState(10000)
-    const [puntuation, setPuntuation] = useState(0);
+    const [puntuation, setPuntuation] = useState(0)
 
     useEffect(() => {
         if (!modelReady) {
@@ -56,7 +56,7 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
                         const newEntry = getHistoryResult(sentence, result)
                         setAnswerMap((previosMap) => previosMap.set(sentence, newEntry))
                         setHistory((previousHistory) => [...previousHistory, newEntry])
-                        setCurrentTime((currentTime) => currentTime + Math.max((3000) * newEntry.matchCount, 20))
+                        setCurrentTime((currentTime) => currentTime + Math.max(3000 * newEntry.matchCount, 20))
                         setPuntuation((puntuation) => newEntry.matchCount * 100 + puntuation)
                     })
                     // TODO : Establish error handling
@@ -71,7 +71,12 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
-                    <Crono currentTime={currentTime} setCurrentTime={setCurrentTime} refreshInterval={11} callbackOnEnd={changeWizardState} />
+                    <Crono
+                        currentTime={currentTime}
+                        setCurrentTime={setCurrentTime}
+                        refreshInterval={11}
+                        callbackOnEnd={changeWizardState}
+                    />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">
                     {history.map((history, index) => (
