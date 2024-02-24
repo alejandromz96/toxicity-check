@@ -18,9 +18,20 @@ const setWizardState = (newWizardState: WizardStateType): void => {
     }
 }
 
+const nextState = (): void => {
+    switch (wizardState) {
+        case 'challenge':
+            return setWizardState('results')
+        case 'results':
+            return setWizardState('presentation')
+        default:
+            return setWizardState('challenge')
+    }
+}
+
 const useWizardState = (): {
     wizardState: WizardStateType
-    setWizardState: (newWizardState: WizardStateType) => void
+    nextState: () => void
 } => {
     const [, setVersion] = useState(0)
 
@@ -33,7 +44,7 @@ const useWizardState = (): {
 
     return {
         wizardState,
-        setWizardState,
+        nextState,
     }
 }
 
