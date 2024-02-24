@@ -1,7 +1,8 @@
-import { useState, type JSX } from 'react'
+import { type JSX } from 'react'
 
 import type { WizardStateType } from '~/lib/types/wizardState.type'
 import { Loader } from '.'
+import useWizardState from '~/hook/useWizardState'
 
 // TODO: Use real components (to remove)
 interface ComponentsProps {
@@ -49,22 +50,20 @@ const stateComponents: Record<WizardStateType, ({ changeWizardState }: Component
 }
 
 const WizardStateComponent = (): JSX.Element => {
-    const [currentWizardState, setCurrentWizardState] = useState<WizardStateType>('presentation')
+    const { wizardState, setWizardState } = useWizardState()
 
     const changeWizardState = (): void => {
-        switch (currentWizardState) {
+        switch (wizardState) {
             case 'challenge':
-                return setCurrentWizardState('results')
+                return setWizardState('results')
             case 'results':
-                return setCurrentWizardState('presentation')
+                return setWizardState('presentation')
             default:
-                return setCurrentWizardState('challenge')
+                return setWizardState('challenge')
         }
     }
 
-    return (
-        <div className="flex flex-col items-center">{stateComponents[currentWizardState]({ changeWizardState })}</div>
-    )
+    return <div className="flex flex-col items-center">{stateComponents[wizardState]({ changeWizardState })}</div>
 }
 
 export default WizardStateComponent
