@@ -50,9 +50,9 @@ export function getSentenceToxicity(sentence: string | string[]): Promise<Catego
             resolve([])
         }
         if (!loadedModel) {
-            // eslint-disable-next-line no-console
             loadModel()
                 .then(() => inferenceSentence())
+                // eslint-disable-next-line no-console
                 .catch((error) => console.log(JSON.stringify(error))) // TODO : Establish error handling
         } else {
             inferenceSentence()
