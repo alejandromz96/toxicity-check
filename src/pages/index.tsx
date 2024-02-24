@@ -28,7 +28,7 @@ const Home = (): JSX.Element => {
                 <meta name="description" content="Toxicity check main page" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-gray-400">
+            <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-violet-700 to-violet-900 text-gray-400">
                 <WizardStateComponent />
                 {/* eslint-disable-next-line no-console */}
                 <ToxicTextComponent asyncSubmit={console.log} loading={false} />
