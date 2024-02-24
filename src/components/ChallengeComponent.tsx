@@ -11,7 +11,8 @@ interface ChallengeComponentHistory {
     sentence: string
     inferences: CategoryInference[]
     response: string
-    time: string
+    time: string,
+    matchCount: number
 }
 
 const getHistoryResult = (sentence: string, inferences: CategoryInference[]): ChallengeComponentHistory => ({
@@ -23,6 +24,7 @@ const getHistoryResult = (sentence: string, inferences: CategoryInference[]): Ch
             .map((inference) => inference.label)
             .join(', ') ?? 'non toxic'
     }`,
+    matchCount: inferences.filter((inference) => inference.results.some((result) => result.match)).length,
     time: new Date().toISOString(),
 })
 
@@ -34,6 +36,8 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
     const [answerMap, setAnswerMap] = useState<Map<string, ChallengeComponentHistory>>(new Map())
     const [history, setHistory] = useState<ChallengeComponentHistory[]>([])
     const [modelReady, setModelReady] = useState(false)
+    const [currentTime, setCurrentTime] = useState(10000)
+    const [puntuation, setPuntuation] = useState(0);
 
     useEffect(() => {
         if (!modelReady) {
@@ -52,6 +56,8 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
                         const newEntry = getHistoryResult(sentence, result)
                         setAnswerMap((previosMap) => previosMap.set(sentence, newEntry))
                         setHistory((previousHistory) => [...previousHistory, newEntry])
+                        setCurrentTime((currentTime) => currentTime + Math.max((3000) * newEntry.matchCount, 20))
+                        setPuntuation((puntuation) => newEntry.matchCount * 100 + puntuation)
                     })
                     // TODO : Establish error handling
                     // eslint-disable-next-line no-console
@@ -64,7 +70,8 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
         <div className="rounded min-w-85">
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
                 <div className="row-span-2">
-                    <Crono duration={200000} refreshInterval={11} callbackOnEnd={changeWizardState} />
+                    {`Puntuation: ${puntuation}`}
+                    <Crono currentTime={currentTime} setCurrentTime={setCurrentTime} refreshInterval={11} callbackOnEnd={changeWizardState} />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">
                     {history.map((history, index) => (

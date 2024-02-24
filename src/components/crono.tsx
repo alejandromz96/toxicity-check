@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { type Dispatch, useEffect, useState } from 'react'
 
 type Props = {
-    duration: number // duration in milis ( less than 24 hours )
+    currentTime: number // duration in milis ( less than 24 hours )
+    setCurrentTime: Dispatch<React.SetStateAction<number>>
     callbackOnEnd?: () => void
     refreshInterval?: number
 }
 
-export default function Crono({ duration, callbackOnEnd, refreshInterval = 10 }: Props): React.JSX.Element {
+export default function Crono({ currentTime, setCurrentTime, callbackOnEnd, refreshInterval = 10 }: Props): React.JSX.Element {
     const [running, setRunning] = useState(true)
-    const [currentTime, setCurrentTime] = useState(duration)
 
     function getTimeBox(): React.JSX.Element {
         const currentTimeDate: Date = new Date(0, 0, 0, 0, 0, 0, currentTime)
@@ -38,14 +38,14 @@ export default function Crono({ duration, callbackOnEnd, refreshInterval = 10 }:
                         callbackOnEnd()
                     }
                 } else {
-                    setCurrentTime(currentTime - refreshInterval)
+                    setCurrentTime((currentTime) => currentTime - refreshInterval)
                 }
             }, refreshInterval)
         } else {
             setCurrentTime(0)
             setRunning(false)
         }
-    }, [callbackOnEnd, currentTime, duration, refreshInterval, running])
+    }, [callbackOnEnd, currentTime, setCurrentTime, refreshInterval, running])
 
     return <div className="w-100 h-100 px-10 py-2 m-2">{getTimeBox()}</div>
 }
