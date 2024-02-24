@@ -1,6 +1,6 @@
 import type { JSX } from 'react'
 import { useWizardState } from '~/hooks'
-import type { WizardStateType } from '~/lib/types/wizardState.type'
+import type { WizardStateType } from '~/lib'
 import { Loader } from '.'
 
 // TODO: Use real components (to remove)
