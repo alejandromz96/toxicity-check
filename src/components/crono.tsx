@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 type Props = {
     duration: number // duration in milis ( less than 24 hours )
     callbackOnEnd?: () => void
-    refreshInterval: number
+    refreshInterval?: number
 }
 
 export default function Crono({ duration, callbackOnEnd, refreshInterval = 10 }: Props): React.JSX.Element {
@@ -19,9 +19,9 @@ export default function Crono({ duration, callbackOnEnd, refreshInterval = 10 }:
 
         return (
             <div>
-                <div className="flex mb-2 justify-between" style={{ fontSize: '10vw' }}>
+                <div className="flex mb-2 justify-between" style={{ fontSize: '4vw' }}>
                     {`${currentMinutesString} : ${currentSecondsString}`}
-                    <div style={{ fontSize: '5vw' }} className="ml-2">
+                    <div style={{ fontSize: '2.5vw' }} className="ml-2">
                         {currentMillisString}
                     </div>
                 </div>

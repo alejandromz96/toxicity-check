@@ -1,10 +1,10 @@
-import { useState, type JSX } from 'react'
+import { useState, type JSX, createElement } from 'react'
 
 import type { WizardStateType } from '~/lib/types/wizardState.type'
-import { Loader } from '.'
+import ChallengeComponent from './ChallengeComponent'
 
 // TODO: Use real components (to remove)
-interface ComponentsProps {
+export interface ComponentsProps {
     changeWizardState: () => void
 }
 const PresentationComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
@@ -15,18 +15,6 @@ const PresentationComponent = ({ changeWizardState }: ComponentsProps): JSX.Elem
             onClick={(): void => changeWizardState()}
         >
             START CHALLENGE
-        </button>
-    </>
-)
-const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
-    <>
-        <h1 className="text-2xl">CHALLENGE</h1>
-        <Loader />
-        <button
-            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => changeWizardState()}
-        >
-            END CHALLENGE
         </button>
     </>
 )
@@ -63,7 +51,7 @@ const WizardStateComponent = (): JSX.Element => {
     }
 
     return (
-        <div className="flex flex-col items-center">{stateComponents[currentWizardState]({ changeWizardState })}</div>
+        <div className="flex flex-col items-center">{createElement(stateComponents[currentWizardState],({ changeWizardState }))}</div>
     )
 }
 
