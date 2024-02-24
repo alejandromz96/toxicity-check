@@ -8,14 +8,14 @@ import type { InferenceProbability } from '~/server/lib/interfaces/inferenceProb
 const DEFAULT_THRESHOLD = 0.8
 const TOXICITY_LABELS = Object.values(InferenceCategories)
 
-let loadedModel: toxicity.ToxicityClassifier;
-let isLoadedModel : boolean = false;
+let loadedModel: toxicity.ToxicityClassifier
+let isLoadedModel: boolean = false
 
-
-export const loadModel = (): Promise<void> => new Promise((resolve, reject) => {
-            if(!isLoadedModel){
-                isLoadedModel = true;
-                toxicity
+export const loadModel = (): Promise<void> =>
+    new Promise((resolve, reject) => {
+        if (!isLoadedModel) {
+            isLoadedModel = true
+            toxicity
                 .load(DEFAULT_THRESHOLD, TOXICITY_LABELS)
                 .then((model) => {
                     loadedModel = model
@@ -25,7 +25,7 @@ export const loadModel = (): Promise<void> => new Promise((resolve, reject) => {
                     isLoadedModel = false
                     reject(error)
                 })
-            }
+        }
     })
 
 export function getSentenceToxicity(sentence: string | string[]): Promise<CategoryInference[]> {
@@ -49,10 +49,12 @@ export function getSentenceToxicity(sentence: string | string[]): Promise<Catego
         if (!sentence?.length) {
             resolve([])
         }
-        if(!loadedModel){
+        if (!loadedModel) {
             // eslint-disable-next-line no-console
-            loadModel().then(() => inferenceSentence()).catch(error => console.log(JSON.stringify(error))) // TODO : Establish error handling
-        }else{
+            loadModel()
+                .then(() => inferenceSentence())
+                .catch((error) => console.log(JSON.stringify(error))) // TODO : Establish error handling
+        } else {
             inferenceSentence()
         }
     })

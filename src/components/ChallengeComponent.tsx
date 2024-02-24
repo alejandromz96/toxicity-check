@@ -27,19 +27,20 @@ const getHistoryResult = (sentence: string, inferences: CategoryInference[]): Ch
 const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    const inference = api.post.getSentenceInference.useMutation();
+    const inference = api.post.getSentenceInference.useMutation()
 
     const [answerMap, setAnswerMap] = useState<Map<string, ChallengeComponentHistory>>(new Map())
     const [history, setHistory] = useState<ChallengeComponentHistory[]>([])
-    const [puntuation, setPuntuation] = useState(0);
+    const [puntuation, setPuntuation] = useState(0)
 
-    const sendInferenceAndUpdateResult = (sentence : string): void => {
+    const sendInferenceAndUpdateResult = (sentence: string): void => {
         if (sentence) {
             const previousResult = answerMap?.get(sentence)
             if (previousResult) {
                 setHistory((previousHistory) => [previousResult, ...previousHistory])
             } else {
-                inference.mutateAsync({ sentence : sentence})
+                inference
+                    .mutateAsync({ sentence: sentence })
                     .then((result: CategoryInference[]) => {
                         const newEntry = getHistoryResult(sentence, result)
                         setAnswerMap((previosMap) => previosMap.set(sentence, newEntry))
@@ -59,11 +60,13 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
                 <div className="row-span-1">
                     <Crono duration={200000} callbackOnEnd={changeWizardState} />
                 </div>
-                <div className='row-span-1'>
+                <div className="row-span-1">
                     <h6>{`Puntuation : ${puntuation}`}</h6>
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">
-                    {history.map((history, index) => <div key={index}>{history.response}</div>)}
+                    {history.map((history, index) => (
+                        <div key={index}>{history.response}</div>
+                    ))}
                 </div>
                 <div className="row-span-1 w-full mt-2">
                     <ToxicTextComponent loading={false} asyncSubmit={sendInferenceAndUpdateResult} />
@@ -73,4 +76,4 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
     )
 }
 
-export default ChallengeComponent;
+export default ChallengeComponent

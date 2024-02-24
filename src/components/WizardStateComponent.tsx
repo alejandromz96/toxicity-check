@@ -51,7 +51,9 @@ const WizardStateComponent = (): JSX.Element => {
     }
 
     return (
-        <div className="flex flex-col items-center">{createElement(stateComponents[currentWizardState],({ changeWizardState }))}</div>
+        <div className="flex flex-col items-center">
+            {createElement(stateComponents[currentWizardState], { changeWizardState })}
+        </div>
     )
 }
 
