@@ -1,9 +1,11 @@
-import React, { type JSX, useState } from 'react'
+import React, { type JSX, useState, useEffect } from 'react'
 import { ToxicTextComponent } from './ToxicTextComponent'
 import Crono from './crono'
 import { type CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
 import { api } from '~/utils/api'
 import { type ComponentsProps } from './WizardStateComponent'
+import { loadModel } from '~/utils/tensorflow'
+import { Loader } from '.'
 
 interface ChallengeComponentHistory {
     sentence: string
@@ -31,13 +33,19 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
 
     const [answerMap, setAnswerMap] = useState<Map<string, ChallengeComponentHistory>>(new Map())
     const [history, setHistory] = useState<ChallengeComponentHistory[]>([])
+    const [modelReady, setModelReady] = useState(false)
+
+    useEffect(() => {
+        if (!modelReady) {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            loadModel().then(() => setModelReady(true))
+        }
+    }, [])
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
         if (sentence) {
             const previousResult = answerMap?.get(sentence)
-            if (previousResult) {
-                setHistory((previousHistory) => [previousResult, ...previousHistory])
-            } else {
+            if (!previousResult) {
                 inference
                     .mutateAsync({ sentence: sentence })
                     .then((result: CategoryInference[]) => {
@@ -52,7 +60,7 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
         }
     }
 
-    return (
+    return modelReady ? (
         <div className="rounded min-w-85">
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
                 <div className="row-span-2">
@@ -68,6 +76,8 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
                 </div>
             </div>
         </div>
+    ) : (
+        <Loader />
     )
 }
 

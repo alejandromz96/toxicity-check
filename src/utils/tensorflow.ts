@@ -9,17 +9,22 @@ const DEFAULT_THRESHOLD = 0.8
 const TOXICITY_LABELS = Object.values(InferenceCategories)
 
 let loadedModel: toxicity.ToxicityClassifier
+let loadingModelPromise: Promise<toxicity.ToxicityClassifier>
 let isLoadedModel: boolean = false
 
-export const loadModel = (): Promise<void> =>
-    new Promise((resolve, reject) => {
+export const loadModel = (): Promise<toxicity.ToxicityClassifier> => {
+    if (loadingModelPromise !== undefined) {
+        return loadingModelPromise
+    }
+
+    return new Promise((resolve, reject) => {
         if (!isLoadedModel) {
             isLoadedModel = true
-            toxicity
-                .load(DEFAULT_THRESHOLD, TOXICITY_LABELS)
+            loadingModelPromise = toxicity.load(DEFAULT_THRESHOLD, TOXICITY_LABELS)
+            loadingModelPromise
                 .then((model) => {
                     loadedModel = model
-                    resolve()
+                    resolve(model)
                 })
                 .catch((error) => {
                     isLoadedModel = false
@@ -27,6 +32,9 @@ export const loadModel = (): Promise<void> =>
                 })
         }
     })
+}
+
+export const isModelLoaded = (): boolean => isLoadedModel
 
 export function getSentenceToxicity(sentence: string | string[]): Promise<CategoryInference[]> {
     return new Promise((resolve, reject) => {
