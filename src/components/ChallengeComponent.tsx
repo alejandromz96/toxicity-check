@@ -31,7 +31,6 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
 
     const [answerMap, setAnswerMap] = useState<Map<string, ChallengeComponentHistory>>(new Map())
     const [history, setHistory] = useState<ChallengeComponentHistory[]>([])
-    const [puntuation, setPuntuation] = useState(0)
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
         if (sentence) {
@@ -45,7 +44,6 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
                         const newEntry = getHistoryResult(sentence, result)
                         setAnswerMap((previosMap) => previosMap.set(sentence, newEntry))
                         setHistory((previousHistory) => [...previousHistory, newEntry])
-                        setPuntuation((previousPuntuation) => previousPuntuation + 1)
                     })
                     // TODO : Establish error handling
                     // eslint-disable-next-line no-console
@@ -57,11 +55,8 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
     return (
         <div className="rounded min-w-85">
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
-                <div className="row-span-1">
-                    <Crono duration={200000} callbackOnEnd={changeWizardState} />
-                </div>
-                <div className="row-span-1">
-                    <h6>{`Puntuation : ${puntuation}`}</h6>
+                <div className="row-span-2">
+                    <Crono duration={200000} refreshInterval={11} callbackOnEnd={changeWizardState} />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">
                     {history.map((history, index) => (
