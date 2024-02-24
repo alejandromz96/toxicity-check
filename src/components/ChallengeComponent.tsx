@@ -44,6 +44,7 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             loadModel().then(() => setModelReady(true))
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
