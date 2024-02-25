@@ -1,70 +1,57 @@
-import { useState, type JSX } from 'react'
-
-import type { WizardStateType } from '~/lib/types/wizardState.type'
+import type { JSX } from 'react'
+import { useWizardState } from '~/hooks'
+import type { WizardStateType } from '~/lib'
 import { Loader } from '.'
 
 // TODO: Use real components (to remove)
 interface ComponentsProps {
-    changeWizardState: () => void
+    nextState: () => void
 }
-const PresentationComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
+const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">PROJECT PRESENTATION</h1>
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => changeWizardState()}
+            onClick={(): void => nextState()}
         >
             START CHALLENGE
         </button>
     </>
 )
-const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
+const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">CHALLENGE</h1>
         <Loader />
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => changeWizardState()}
+            onClick={(): void => nextState()}
         >
             END CHALLENGE
         </button>
     </>
 )
-const ResultsComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => (
+const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">RESULTS</h1>
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => changeWizardState()}
+            onClick={(): void => nextState()}
         >
             RETURN TO PRESENTATION
         </button>
     </>
 )
 
-const stateComponents: Record<WizardStateType, ({ changeWizardState }: ComponentsProps) => JSX.Element> = {
+const stateComponents: Record<WizardStateType, ({ nextState }: ComponentsProps) => JSX.Element> = {
     challenge: ChallengeComponent,
     results: ResultsComponent,
     presentation: PresentationComponent,
 }
 
 const WizardStateComponent = (): JSX.Element => {
-    const [currentWizardState, setCurrentWizardState] = useState<WizardStateType>('presentation')
+    const { wizardState, nextState } = useWizardState()
 
-    const changeWizardState = (): void => {
-        switch (currentWizardState) {
-            case 'challenge':
-                return setCurrentWizardState('results')
-            case 'results':
-                return setCurrentWizardState('presentation')
-            default:
-                return setCurrentWizardState('challenge')
-        }
-    }
-
-    return (
-        <div className="flex flex-col items-center">{stateComponents[currentWizardState]({ changeWizardState })}</div>
-    )
+    return <div className="flex flex-col items-center">{stateComponents[wizardState]({ nextState })}</div>
 }
 
 export default WizardStateComponent

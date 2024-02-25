@@ -1,5 +1,6 @@
 import { useEffect, useState, type JSX } from 'react'
 import Head from 'next/head'
+import Crono from '~/components/crono'
 
 import { ToxicTextComponent } from '~/components/ToxicTextComponent'
 import { api } from '~/utils/api'
@@ -42,6 +43,9 @@ const Home = (): JSX.Element => {
                     <button type="submit" className="bg-white rounded-sm px-4" onClick={inferenceSentence}>
                         Inference
                     </button>
+                </div>
+                <div>
+                    <Crono duration={100000} refreshInterval={50} />
                 </div>
             </main>
         </>
