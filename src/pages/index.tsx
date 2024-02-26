@@ -5,19 +5,33 @@ import WizardStateComponent from '~/components/WizardStateComponent'
 
 const Home = (): JSX.Element => {
     const inference = api.post.getSentenceInference.useMutation()
-
+    
     useEffect(() => {
         if (inference.data && inference.data.length > 0) {
             // eslint-disable-next-line no-console
             console.log(inference.data)
         }
     }, [inference?.data])
-
+    
+    // TODO: update meta tags URLs when logo is merged
     return (
         <>
             <Head>
                 <title>TOXICITY CHECK</title>
-                <meta name="description" content="Toxicity check main page" />
+                <meta name="description" content="Get out your toxicity and get the best score you can." />
+                <meta name="keywords" content="Toxicity, Score, IA, Toxicity Check, Toxicity Meter" />
+                <meta name="robots" content="index,follow" />
+
+                <meta property="og:title" content="Check your Toxicity" />
+                <meta property="og:description" content="Get out your toxicity and get the best score you can." />
+                <meta property="og:image" content="URL_de_la_imagen" />
+
+                <meta name="twitter:card" content="Check your Toxicity" />
+                <meta name="twitter:title" content="Check your Toxicity" />
+                <meta name="twitter:description" content="Get out your toxicity and get the best score you can." />
+                <meta name="twitter:image" content="URL_de_la_imagen" />
+
+
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-gray-400">
