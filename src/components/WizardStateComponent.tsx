@@ -1,7 +1,7 @@
 import type { JSX } from 'react'
 import { useWizardState } from '~/hooks'
 import type { WizardStateType } from '~/lib'
-import { Loader } from '.'
+import ChallengeComponent from './ChallengeComponent'
 
 // TODO: Use real components (to remove)
 interface ComponentsProps {
@@ -15,18 +15,6 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
             onClick={(): void => nextState()}
         >
             START CHALLENGE
-        </button>
-    </>
-)
-const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => (
-    <>
-        <h1 className="text-2xl">CHALLENGE</h1>
-        <Loader />
-        <button
-            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => nextState()}
-        >
-            END CHALLENGE
         </button>
     </>
 )

@@ -27,7 +27,7 @@ export const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): Rea
     }
 
     return (
-        <div className="flex items-center w-full px-2 py-2 rounded-lg bg-white">
+        <div className="flex items-center w-full px-2 py-2 rounded-lg bg-white w-full">
             <input
                 className="block mx-2 p-2.5 w-full text-sm rounded-lg"
                 placeholder="Be toxic!"
