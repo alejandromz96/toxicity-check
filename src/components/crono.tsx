@@ -6,7 +6,7 @@ type Props = {
     refreshInterval: number
 }
 
-export default function Crono({ duration, callbackOnEnd, refreshInterval = 10 }: Props): React.JSX.Element {
+const Crono =({ duration, callbackOnEnd, refreshInterval = 10 }: Props): React.JSX.Element => {
     const [running, setRunning] = useState(true)
     const [currentTime, setCurrentTime] = useState(duration)
 
@@ -49,3 +49,5 @@ export default function Crono({ duration, callbackOnEnd, refreshInterval = 10 }:
 
     return <div className="w-100 h-100 px-10 py-2 m-2">{getTimeBox()}</div>
 }
+
+export default Crono
