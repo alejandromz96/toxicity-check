@@ -1,5 +1,5 @@
 import * as toxicity from '@tensorflow-models/toxicity'
-import { InferenceCategories, type CategoryInference, InferenceProbability } from '~/server/lib'
+import { InferenceCategories, type CategoryInference, type InferenceProbability } from '~/server/lib'
 
 // If the inference of the model is superior to 0.8 ( 80% )
 // the results will be returned as a match.
