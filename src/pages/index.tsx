@@ -5,14 +5,14 @@ import WizardStateComponent from '~/components/WizardStateComponent'
 
 const Home = (): JSX.Element => {
     const inference = api.post.getSentenceInference.useMutation()
-    
+
     useEffect(() => {
         if (inference.data && inference.data.length > 0) {
             // eslint-disable-next-line no-console
             console.log(inference.data)
         }
     }, [inference?.data])
-    
+
     // TODO: update meta tags URLs when logo is merged
     return (
         <>
@@ -30,7 +30,6 @@ const Home = (): JSX.Element => {
                 <meta name="twitter:title" content="Check your Toxicity" />
                 <meta name="twitter:description" content="Get out your toxicity and get the best score you can." />
                 <meta name="twitter:image" content="URL_de_la_imagen" />
-
 
                 <link rel="icon" href="/favicon.ico" />
             </Head>

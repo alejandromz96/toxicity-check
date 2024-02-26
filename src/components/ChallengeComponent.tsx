@@ -28,7 +28,7 @@ const getHistoryResult = (sentence: string, inferences: CategoryInference[]): Ch
     time: new Date().toISOString(),
 })
 
-const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => {
+const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     const inference = api.post.getSentenceInference.useMutation()
@@ -44,7 +44,7 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             loadModel().then(() => setModelReady(true))
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
@@ -73,10 +73,9 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
                     <Crono
-                        currentTime={currentTime}
-                        setCurrentTime={setCurrentTime}
+                        duration={currentTime}
                         refreshInterval={11}
-                        callbackOnEnd={changeWizardState}
+                        callbackOnEnd={nextState}
                     />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">

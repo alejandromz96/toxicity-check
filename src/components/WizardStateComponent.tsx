@@ -4,7 +4,7 @@ import type { WizardStateType } from '~/lib'
 import ChallengeComponent from './ChallengeComponent'
 
 // TODO: Use real components (to remove)
-interface ComponentsProps {
+export interface ComponentsProps {
     nextState: () => void
 }
 const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
