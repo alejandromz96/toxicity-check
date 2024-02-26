@@ -1,15 +1,15 @@
-import styles from '../styles/Loader.module.css'
+import { LoaderStyles } from '~/styles'
 import type { JSX } from 'react'
 
 const Loader = (): JSX.Element => (
-    <div className={styles.blobs}>
-        <div className={styles.blob_center}></div>
-        <div className={styles.blob}></div>
-        <div className={styles.blob}></div>
-        <div className={styles.blob}></div>
-        <div className={styles.blob}></div>
-        <div className={styles.blob}></div>
-        <div className={styles.blob}></div>
+    <div className={LoaderStyles.blobs}>
+        <div className={LoaderStyles.blob_center}></div>
+        <div className={LoaderStyles.blob}></div>
+        <div className={LoaderStyles.blob}></div>
+        <div className={LoaderStyles.blob}></div>
+        <div className={LoaderStyles.blob}></div>
+        <div className={LoaderStyles.blob}></div>
+        <div className={LoaderStyles.blob}></div>
     </div>
 )
 

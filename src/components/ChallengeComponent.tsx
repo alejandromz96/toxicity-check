@@ -1,11 +1,9 @@
 import React, { type JSX, useState, useEffect } from 'react'
-import { ToxicTextComponent } from './ToxicTextComponent'
-import Crono from './crono'
-import { type CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
-import { api } from '~/utils/api'
-import { type ComponentsProps } from './WizardStateComponent'
-import { loadModel } from '~/utils/tensorflow'
+import { ToxicTextComponent, Crono } from '~/components'
+import { type CategoryInference } from '~/server/lib'
+import { api, loadModel } from '~/utils'
 import { Loader } from '.'
+import type { ComponentsProps } from '~/lib'
 
 interface ChallengeComponentHistory {
     sentence: string
@@ -28,7 +26,7 @@ const getHistoryResult = (sentence: string, inferences: CategoryInference[]): Ch
     time: new Date().toISOString(),
 })
 
-const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => {
+const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     const inference = api.post.getSentenceInference.useMutation()
@@ -44,7 +42,7 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             loadModel().then(() => setModelReady(true))
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
@@ -72,12 +70,7 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
-                    <Crono
-                        currentTime={currentTime}
-                        setCurrentTime={setCurrentTime}
-                        refreshInterval={11}
-                        callbackOnEnd={changeWizardState}
-                    />
+                    <Crono duration={currentTime} refreshInterval={11} callbackOnEnd={nextState} />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">
                     {history.map((history, index) => (
