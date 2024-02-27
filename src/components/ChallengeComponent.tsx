@@ -3,9 +3,9 @@ import { ToxicTextComponent } from './ToxicTextComponent'
 import Crono from './crono'
 import { type CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
 import { api } from '~/utils/api'
-import { type ComponentsProps } from './WizardStateComponent'
 import { loadModel } from '~/utils/tensorflow'
 import { Loader } from '.'
+import type { ComponentsProps } from './WizardStateComponent'
 
 interface ChallengeComponentHistory {
     sentence: string
@@ -28,7 +28,7 @@ const getHistoryResult = (sentence: string, inferences: CategoryInference[]): Ch
     time: new Date().toISOString(),
 })
 
-const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element => {
+const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     const inference = api.post.getSentenceInference.useMutation()
@@ -73,10 +73,9 @@ const ChallengeComponent = ({ changeWizardState }: ComponentsProps): JSX.Element
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
                     <Crono
-                        currentTime={currentTime}
-                        setCurrentTime={setCurrentTime}
+                        duration={currentTime}
                         refreshInterval={11}
-                        callbackOnEnd={changeWizardState}
+                        callbackOnEnd={nextState}
                     />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">
