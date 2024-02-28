@@ -44,7 +44,7 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             loadModel().then(() => setModelReady(true))
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
@@ -73,7 +73,8 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
                     <Crono
-                        duration={currentTime}
+                        currentTime={currentTime}
+                        setCurrentTime={setCurrentTime}
                         refreshInterval={11}
                         callbackOnEnd={nextState}
                     />
