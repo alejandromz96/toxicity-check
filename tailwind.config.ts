@@ -8,6 +8,15 @@ export default {
             fontFamily: {
                 sans: ['var(--font-sans)', ...fontFamily.sans],
             },
+            keyframes: {
+                animateTop: {
+                    '0%': { top: '-150px' },
+                    '100%': { top: '100%' },
+                },
+            },
+            animation: {
+                'translate-top': 'animateTop 25s linear infinite',
+            },
         },
     },
     plugins: [],
