@@ -5,15 +5,9 @@ import { type CategoryInference } from '~/server/lib/interfaces/categoryInferenc
 import { api } from '~/utils/api'
 import { loadModel } from '~/utils/tensorflow'
 import { Loader } from '.'
-import type { ComponentsProps } from './WizardStateComponent'
-
-interface ChallengeComponentHistory {
-    sentence: string
-    inferences: CategoryInference[]
-    response: string
-    time: string
-    matchCount: number
-}
+import { type ChallengeComponentHistory } from '~/interfaces/challengeComponentHistory.interface'
+import { type ComponentsProps } from './WizardStateComponent'
+import useResultState from '~/hooks/useResultState'
 
 const getHistoryResult = (sentence: string, inferences: CategoryInference[]): ChallengeComponentHistory => ({
     sentence,
@@ -38,6 +32,7 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     const [modelReady, setModelReady] = useState(false)
     const [currentTime, setCurrentTime] = useState(10000)
     const [puntuation, setPuntuation] = useState(0)
+    const { setResultState } = useResultState()
 
     useEffect(() => {
         if (!modelReady) {
@@ -76,7 +71,10 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                         currentTime={currentTime}
                         setCurrentTime={setCurrentTime}
                         refreshInterval={11}
-                        callbackOnEnd={nextState}
+                        callbackOnEnd={() => {
+                            setResultState(history)
+                            nextState()
+                        }}
                     />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">

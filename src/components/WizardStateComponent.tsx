@@ -2,6 +2,7 @@ import { createElement, type JSX } from 'react'
 import { useWizardState } from '~/hooks'
 import type { WizardStateType } from '~/lib'
 import ChallengeComponent from './ChallengeComponent'
+import ResultComponent from './ResultComponent'
 
 // TODO: Use real components (to remove)
 export interface ComponentsProps {
@@ -18,21 +19,10 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
         </button>
     </>
 )
-const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => (
-    <>
-        <h1 className="text-2xl">RESULTS</h1>
-        <button
-            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => nextState()}
-        >
-            RETURN TO PRESENTATION
-        </button>
-    </>
-)
 
 const stateComponents: Record<WizardStateType, ({ nextState }: ComponentsProps) => JSX.Element> = {
     challenge: ChallengeComponent,
-    results: ResultsComponent,
+    results: ResultComponent,
     presentation: PresentationComponent,
 }
 
