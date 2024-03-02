@@ -73,7 +73,8 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
                     <Crono
-                        duration={currentTime}
+                        currentTime={currentTime}
+                        setCurrentTime={setCurrentTime}
                         refreshInterval={11}
                         callbackOnEnd={nextState}
                     />
