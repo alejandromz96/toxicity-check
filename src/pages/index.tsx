@@ -1,4 +1,4 @@
-import { useEffect, type JSX } from 'react'
+import type { JSX } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import ResultsComponent from '~/components/resultsComponent'
