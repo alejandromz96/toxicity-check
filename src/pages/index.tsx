@@ -1,18 +1,10 @@
-import { useEffect, useState, type JSX } from 'react'
+import { useEffect, type JSX } from 'react'
 import Head from 'next/head'
-
-import { ToxicTextComponent } from '~/components/ToxicTextComponent'
 import { api } from '~/utils/api'
 import WizardStateComponent from '~/components/WizardStateComponent'
 
 const Home = (): JSX.Element => {
-    const [inputValue, setInputValue] = useState('')
-
     const inference = api.post.getSentenceInference.useMutation()
-
-    function inferenceSentence(): void {
-        inference.mutate({ sentence: inputValue })
-    }
 
     useEffect(() => {
         if (inference.data && inference.data.length > 0) {
@@ -30,19 +22,6 @@ const Home = (): JSX.Element => {
             </Head>
             <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-violet-700 to-violet-900 text-gray-400">
                 <WizardStateComponent />
-                {/* eslint-disable-next-line no-console */}
-                <ToxicTextComponent asyncSubmit={console.log} loading={false} />
-                <div className="container flex flex-col items-center justify-center gap-12 px-6">
-                    <input
-                        className="block rounded w-full px-4"
-                        onChange={(event) => {
-                            setInputValue(event.target.value)
-                        }}
-                    ></input>
-                    <button type="submit" className="bg-white rounded-sm px-4" onClick={inferenceSentence}>
-                        Inference
-                    </button>
-                </div>
             </main>
         </>
     )
