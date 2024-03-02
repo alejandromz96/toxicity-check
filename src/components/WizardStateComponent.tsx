@@ -1,10 +1,10 @@
-import type { JSX } from 'react'
+import { createElement, type JSX } from 'react'
 import { useWizardState } from '~/hooks'
 import type { WizardStateType } from '~/lib'
-import { Loader } from '.'
+import ChallengeComponent from './ChallengeComponent'
 
 // TODO: Use real components (to remove)
-interface ComponentsProps {
+export interface ComponentsProps {
     nextState: () => void
 }
 const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
@@ -15,18 +15,6 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
             onClick={(): void => nextState()}
         >
             START CHALLENGE
-        </button>
-    </>
-)
-const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => (
-    <>
-        <h1 className="text-2xl">CHALLENGE</h1>
-        <Loader />
-        <button
-            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => nextState()}
-        >
-            END CHALLENGE
         </button>
     </>
 )
@@ -51,7 +39,9 @@ const stateComponents: Record<WizardStateType, ({ nextState }: ComponentsProps) 
 const WizardStateComponent = (): JSX.Element => {
     const { wizardState, nextState } = useWizardState()
 
-    return <div className="flex flex-col items-center">{stateComponents[wizardState]({ nextState })}</div>
+    const body = createElement(stateComponents[wizardState], { nextState })
+
+    return <div className="flex flex-col items-center">{body}</div>
 }
 
 export default WizardStateComponent
