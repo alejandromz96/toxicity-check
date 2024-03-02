@@ -1,5 +1,5 @@
 import React, { type JSX, useState, useEffect } from 'react'
-import { ToxicTextComponent, Crono, Loader } from '~/components'
+import { ToxicTextComponent, CronoComponent, LoaderComponent } from '~/components'
 import { type CategoryInference } from '~/server/lib'
 import { api, loadModel } from '~/utils'
 import type { ComponentsProps } from '~/lib'
@@ -69,7 +69,7 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
-                    <Crono
+                    <CronoComponent
                         currentTime={currentTime}
                         setCurrentTime={setCurrentTime}
                         refreshInterval={11}
@@ -87,7 +87,7 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
             </div>
         </div>
     ) : (
-        <Loader />
+        <LoaderComponent />
     )
 }
 
