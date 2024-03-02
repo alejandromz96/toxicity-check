@@ -33,7 +33,50 @@ import { ZodError } from 'zod'
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const createInnerTRPCContext = (/* _opts: CreateContextOptions */) => ({})
+const createInnerTRPCContext = async (/* _opts: CreateContextOptions */) => {
+    const loadedModel = await loadModel()
+
+    return {
+        loadedModel,
+        isLoadedModel,
+    }
+}
+
+import * as toxicity from '@tensorflow-models/toxicity'
+import { InferenceCategories } from '~/server/lib/enums/inferenceCategories.enum'
+
+// If the inference of the model is superior to 0.8 ( 80% )
+// the results will be returned as a match.
+const DEFAULT_THRESHOLD = 0.8
+const TOXICITY_LABELS = Object.values(InferenceCategories)
+
+let loadedModel: toxicity.ToxicityClassifier
+let loadingModelPromise: Promise<toxicity.ToxicityClassifier>
+let isLoadedModel: boolean = false
+
+const loadModel = (): Promise<toxicity.ToxicityClassifier> => {
+    if (loadingModelPromise !== undefined) {
+        return loadingModelPromise
+    }
+
+    return new Promise((resolve, reject) => {
+        if (!isLoadedModel) {
+            isLoadedModel = true
+            loadingModelPromise = toxicity.load(DEFAULT_THRESHOLD, TOXICITY_LABELS)
+            loadingModelPromise
+                .then((model) => {
+                    loadedModel = model
+                    resolve(model)
+                })
+                .catch((error) => {
+                    isLoadedModel = false
+                    reject(error)
+                })
+        } else {
+            resolve(loadedModel)
+        }
+    })
+}
 
 /**
  * This is the actual context you will use in your router. It will be used to process every request
@@ -42,7 +85,7 @@ const createInnerTRPCContext = (/* _opts: CreateContextOptions */) => ({})
  * @see https://trpc.io/docs/context
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
-export const createTRPCContext = (/* _opts: CreateNextContextOptions */) => createInnerTRPCContext(/* {} */)
+export const createTRPCContext = (/* _opts: CreateNextContextOptions */) => createInnerTRPCContext()
 
 /**
  * 2. INITIALIZATION
