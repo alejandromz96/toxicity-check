@@ -2,11 +2,11 @@ import { useEffect, type JSX } from 'react'
 import Head from 'next/head'
 import { api } from '~/utils/api'
 import WizardStateComponent from '~/components/WizardStateComponent'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
 const Home = (): JSX.Element => {
     const inference = api.post.getSentenceInference.useMutation()
-    const router = useRouter();
+    const router = useRouter()
 
     useEffect(() => {
         if (inference.data && inference.data.length > 0) {
@@ -15,8 +15,8 @@ const Home = (): JSX.Element => {
         }
     }, [inference?.data])
 
-    const handleOnclick = () => {
-        router.push('/about')
+    const handleOnclick = async (): Promise<void> => {
+        await router.push('/about')
     }
 
     return (
@@ -26,7 +26,7 @@ const Home = (): JSX.Element => {
                 <meta name="description" content="Toxicity check main page" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className='flex flex-col space-y-6'>
+            <main className="flex flex-col space-y-6">
                 <WizardStateComponent />
                 <button onClick={handleOnclick}>Go to about page</button>
             </main>

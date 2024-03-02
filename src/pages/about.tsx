@@ -1,6 +1,7 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { UserCircleIcon } from '@heroicons/react/24/solid';
+import type { JSX } from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 
 interface IMediaUrls {
     linkedIn?: string
@@ -24,44 +25,44 @@ const PERSONAL_DATA: IPromoCard[] = [
         links: {
             linkedIn: 'https://es.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/',
             github: 'https://github.com/cpl121/',
-            portfolio: 'https://cpl121.eth.limo/'
-        }
+            portfolio: 'https://cpl121.eth.limo/',
+        },
     },
     {
         name: 'Alex',
         links: {
             github: 'https://github.com/alejandromz96/',
-        }
+        },
     },
     {
         name: 'Pepe',
         links: {
             github: 'https://github.com/CodingAndCodingAgain/',
-        }
+        },
     },
 ]
 
-export default function AboutPage() {
-    const router = useRouter();
-    const handleOnclick = () => {
-        router.push('/')
+export default function AboutPage(): JSX.Element {
+    const router = useRouter()
+    const handleOnclick = async (): Promise<void> => {
+        await router.push('/')
     }
     return (
         <div className="flex flex-col justify-around h-screen">
             <span className="text-2xl">ABOUT PAGE</span>
             <div className="flex flex-col space-y-8">
-                {PERSONAL_DATA.map((data) => (
-                    <div className="flex flex-col border border-solid rounded-xl p-4 w-80 h-44 space-y-2">
+                {PERSONAL_DATA.map((data, index) => (
+                    <div className="flex flex-col border border-solid rounded-xl p-4 w-80 h-44 space-y-2" key={index}>
                         <span className="text-bold text-center text-xl border-b border-solid">{data.name}</span>
                         <div className="flex flex-row space-x-4">
                             {data.profileImage ? (
                                 <img
-                                src={data.profileImage}
-                                alt={data.name}
-                                width={100}
-                                height={66}
-                                style={{ borderRadius: '100%' }}
-                              />
+                                    src={data.profileImage}
+                                    alt={data.name}
+                                    width={100}
+                                    height={66}
+                                    style={{ borderRadius: '100%' }}
+                                />
                             ) : (
                                 <Image
                                     src={DEFAULT_IMAGE_PATH}
@@ -104,4 +105,4 @@ export default function AboutPage() {
             <button onClick={handleOnclick}>Return to Home page</button>
         </div>
     )
-  }
+}

@@ -56,7 +56,7 @@ const config = {
         // EsLint Rules
         'arrow-body-style': 'warn', // WARN b/c blocks style allows for readability and ensure scope
         'arrow-spacing': 'error',
-        'eol-last': 'error',
+        'eol-last': 'warn',
         eqeqeq: 'error',
         'func-call-spacing': 'error',
         indent: 'off', // OFF b/c causes problems between Prettier and ESLint
