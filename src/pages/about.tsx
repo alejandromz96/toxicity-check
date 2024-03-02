@@ -12,6 +12,7 @@ interface IMediaUrls {
 interface IPromoCard {
     name: string
     profileImage?: string
+    description?: string
     links: IMediaUrls
 }
 
@@ -22,6 +23,7 @@ const PERSONAL_DATA: IPromoCard[] = [
     {
         name: 'CPL121',
         profileImage: 'https://raw.seadn.io/files/576dd82b5edd4bf7ebcba49251e28175.jpg',
+        description: 'Fullstack web3 Developer',
         links: {
             linkedIn: 'https://es.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/',
             github: 'https://github.com/cpl121/',
@@ -52,7 +54,7 @@ export default function AboutPage(): JSX.Element {
             <span className="text-2xl">ABOUT PAGE</span>
             <div className="flex flex-col space-y-8">
                 {PERSONAL_DATA.map((data, index) => (
-                    <div className="flex flex-col border border-solid rounded-xl p-4 w-80 h-44 space-y-2" key={index}>
+                    <div className="flex flex-col border-2 border-solid rounded-xl p-4 w-96 h-fit space-y-2 hover:shadow-lg hover:shadow-emerald-500" key={index}>
                         <span className="text-bold text-center text-xl border-b border-solid">{data.name}</span>
                         <div className="flex flex-row space-x-4">
                             {data.profileImage ? (
@@ -99,6 +101,9 @@ export default function AboutPage(): JSX.Element {
                                 )}
                             </div>
                         </div>
+                        {data.description && (
+                            <span className='text-center text-lg pt-4'>{data.description}</span>
+                        )}
                     </div>
                 ))}
             </div>
