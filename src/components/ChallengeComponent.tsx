@@ -1,8 +1,7 @@
 import React, { type JSX, useState, useEffect } from 'react'
-import { ToxicTextComponent, Crono } from '~/components'
+import { ToxicTextComponent, Crono, Loader } from '~/components'
 import { type CategoryInference } from '~/server/lib'
 import { api, loadModel } from '~/utils'
-import { Loader } from '.'
 import type { ComponentsProps } from '~/lib'
 
 interface ChallengeComponentHistory {
@@ -70,7 +69,12 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
-                    <Crono duration={currentTime} refreshInterval={11} callbackOnEnd={nextState} />
+                    <Crono
+                        currentTime={currentTime}
+                        setCurrentTime={setCurrentTime}
+                        refreshInterval={11}
+                        callbackOnEnd={nextState}
+                    />
                 </div>
                 <div className="row-span-9 overflow-y-auto w-full">
                     {history.map((history, index) => (
