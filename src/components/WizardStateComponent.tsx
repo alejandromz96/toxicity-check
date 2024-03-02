@@ -18,6 +18,8 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
         </button>
     </>
 )
+
+// TODO: modify this component with new result component
 const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => (
     <>
         <h1 className="text-2xl">RESULTS</h1>
