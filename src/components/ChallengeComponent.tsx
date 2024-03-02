@@ -3,9 +3,9 @@ import { ToxicTextComponent } from './ToxicTextComponent'
 import Crono from './crono'
 import { type CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
 import { api } from '~/utils/api'
-import { type ComponentsProps } from './WizardStateComponent'
 import { loadModel } from '~/utils/tensorflow'
 import { Loader } from '.'
+import type { ComponentsProps } from './WizardStateComponent'
 
 interface ChallengeComponentHistory {
     sentence: string
