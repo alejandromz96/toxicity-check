@@ -1,28 +1,36 @@
-# Create T3 App
+# Toxicity Check
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Important Note
 
-## What's next? How do I make an app with this?
+This is meant to be satire, don't be toxic online.
+We are not promoting toxic behaviour online.
+If you are toxic online, go outside and seek professional help.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## How toxic are you?
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+How toxic can you be? Let's find out!
 
--   [Next.js](https://nextjs.org)
--   [NextAuth.js](https://next-auth.js.org)
--   [Prisma](https://prisma.io)
--   [Tailwind CSS](https://tailwindcss.com)
--   [tRPC](https://trpc.io)
+Toxicity Check allows you to perform a timed endurance test in which you will have to write as many toxic responses as you can. Each toxic response will increase your available time and, depending on how toxic are you, will increase your toxicity score.
 
-## Learn More
+When the time is up you will be able to see how you did and your most and least toxic response.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Technologies used
 
--   [Documentation](https://create.t3.gg/)
--   [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+-   [T3 Stack](https://create.t3.gg/)
+-   [React](https://react.dev/)
+-   [Tensorflow.js](https://www.tensorflow.org/)
+-   [Typescript](https://www.typescriptlang.org/)
+-   [Tailwindcss](https://tailwindcss.com/)
+-   [Heroicons](https://heroicons.com/)
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## How it works?
 
-## How do I deploy this?
+We use one of the pretrained models of Tensorflow.js [toxicity](https://github.com/tensorflow/tfjs-models/tree/master/toxicity) which allows you to check if the sentence is toxic. Also, this model has different categories of toxicity like threat, insult, etc...
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+The model is loaded on the context of tRPC ( part of the stack of T3 ) and we inference the toxicity of each input by the user.
+
+## About us
+
+-
+-
+-
