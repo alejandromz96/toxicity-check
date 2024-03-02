@@ -56,8 +56,8 @@ devDependencies:
         specifier: ^18.17.0
         version: 18.19.14
     '@types/react':
-        specifier: ^18.2.37
-        version: 18.2.51
+        specifier: ^18.2.58
+        version: 18.2.58
     '@types/react-dom':
         specifier: ^18.2.15
         version: 18.2.18
@@ -825,13 +825,13 @@ packages:
                 integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==,
             }
         dependencies:
-            '@types/react': 18.2.51
+            '@types/react': 18.2.58
         dev: true
 
-    /@types/react@18.2.51:
+    /@types/react@18.2.58:
         resolution:
             {
-                integrity: sha512-XeoMaU4CzyjdRr3c4IQQtiH7Rpo18V07rYZUucEZQwOUEtGgTXv7e6igQiQ+xnV6MbMe1qjEmKdgMNnfppnXfg==,
+                integrity: sha512-TaGvMNhxvG2Q0K0aYxiKfNDS5m5ZsoIBBbtfUorxdH4NGSXIlYvZxLJI+9Dd3KjeB3780bciLyAb7ylO8pLhPw==,
             }
         dependencies:
             '@types/prop-types': 15.7.11
