@@ -1,1 +1,2 @@
-export * from './wizardState.type'
+export * from './WizardState.type'
+export * from './WithChildren.type'

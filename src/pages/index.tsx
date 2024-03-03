@@ -20,9 +20,9 @@ const Home = (): JSX.Element => {
                 <meta name="description" content="Toxicity check main page" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-violet-700 to-violet-900 text-gray-400">
+            <div className="flex flex-col items-center justify-center text-gray-400">
                 <WizardStateComponent />
-            </main>
+            </div>
         </>
     )
 }
