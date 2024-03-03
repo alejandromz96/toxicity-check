@@ -3,9 +3,16 @@ import { ToxicTextComponent } from './ToxicTextComponent'
 import Crono from './crono'
 import { type CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
 import { api } from '~/utils/api'
-import { type ChallengeComponentHistory } from '~/interfaces/challengeComponentHistory.interface'
-import { type ComponentsProps } from './WizardStateComponent'
 import useResultState from '~/hooks/useResultState'
+import type { ComponentsProps } from './WizardStateComponent'
+
+interface ChallengeComponentHistory {
+    sentence: string
+    inferences: CategoryInference[]
+    response: string
+    time: string
+    matchCount: number
+}
 
 const getHistoryResult = (sentence: string, inferences: CategoryInference[]): ChallengeComponentHistory => ({
     sentence,
