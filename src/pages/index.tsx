@@ -19,15 +19,15 @@ const Home = (): JSX.Element => {
             <Head>
                 <title>TOXICITY CHECK</title>
                 <meta name="description" content="Get out your toxicity and get the best score you can." />
-                <meta name="keywords" content="Toxicity, Score, IA, Toxicity Check, Toxicity Meter" />
+                <meta name="keywords" content="Toxicity, Score, IA, Toxicity Check, Toxicity Meter, Online Toxicity, Challenge" />
                 <meta name="robots" content="index,follow" />
 
-                <meta property="og:title" content="Check your Toxicity" />
+                <meta property="og:title" content="Check how toxic are you online!" />
                 <meta property="og:description" content="Get out your toxicity and get the best score you can." />
                 <meta property="og:image" content="URL_de_la_imagen" />
 
-                <meta name="twitter:card" content="Check your Toxicity" />
-                <meta name="twitter:title" content="Check your Toxicity" />
+                <meta name="twitter:card" content="Check how toxic are you online!" />
+                <meta name="twitter:title" content="Check how toxic are you online!" />
                 <meta name="twitter:description" content="Get out your toxicity and get the best score you can." />
                 <meta name="twitter:image" content="URL_de_la_imagen" />
 
