@@ -1,10 +1,10 @@
 import { type FC } from 'react'
 
-import type { WithChildren } from '~/lib/types'
+import type { ComponentWithChildren } from '~/lib/types'
 
 import { Footer, Background, Header } from './'
 
-const Layout: FC<WithChildren> = ({ children }) => (
+const Layout: FC<ComponentWithChildren> = ({ children }) => (
     <main className="w-fit">
         <Header />
         <Background />
