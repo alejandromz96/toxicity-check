@@ -1,8 +1,7 @@
 import { createElement, type JSX } from 'react'
 import { useWizardState } from '~/hooks'
 import type { WizardStateType } from '~/lib'
-import ChallengeComponent from './ChallengeComponent'
-import ResultComponent from './ResultComponent'
+import { ChallengeComponent, ResultsComponent } from '.'
 
 // TODO: Use real components (to remove)
 export interface ComponentsProps {
@@ -22,7 +21,7 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
 
 const stateComponents: Record<WizardStateType, ({ nextState }: ComponentsProps) => JSX.Element> = {
     challenge: ChallengeComponent,
-    results: ResultComponent,
+    results: ResultsComponent,
     presentation: PresentationComponent,
 }
 

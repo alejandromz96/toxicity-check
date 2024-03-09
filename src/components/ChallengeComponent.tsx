@@ -1,9 +1,9 @@
 import React, { type JSX, useState } from 'react'
 import { ToxicTextComponent } from './ToxicTextComponent'
 import Crono from './crono'
-import { type CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
 import { api } from '~/utils/api'
-import useResultState from '~/hooks/useResultState'
+import { useResultState } from '~/hooks'
+import type { CategoryInference } from '~/server/lib/interfaces'
 import type { ComponentsProps } from './WizardStateComponent'
 
 interface ChallengeComponentHistory {

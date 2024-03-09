@@ -1,9 +1,9 @@
 import { FaceFrownIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
 import React, { type JSX } from 'react'
 import useResultState from '~/hooks/useResultState'
-import { type ChallengeComponentHistory } from '~/interfaces/challengeComponentHistory.interface'
-import { InferenceCategories } from '~/server/lib/enums/inferenceCategories.enum'
-import { type ComponentsProps } from './WizardStateComponent'
+import type { ChallengeComponentHistory } from '~/interfaces'
+import type { ComponentsProps } from './WizardStateComponent'
+import { InferenceCategories } from '~/server/lib/enums'
 
 interface Result {
     totalPuntuation: number
@@ -94,7 +94,7 @@ const getMessageCardsTags = (message: ChallengeComponentHistory | null): JSX.Ele
     </>
 )
 
-const ResultComponent = ({ nextState }: ComponentsProps): JSX.Element => {
+const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     const { resultState } = useResultState()
 
     const finalResult = getResult(resultState)
@@ -147,4 +147,4 @@ const ResultComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     )
 }
 
-export default ResultComponent
+export default ResultsComponent

@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
-import { type ChallengeComponentHistory } from '~/interfaces/challengeComponentHistory.interface'
+import type { ChallengeComponentHistory } from '~/interfaces'
 
 let resultState: ChallengeComponentHistory[] = []
 

@@ -1,6 +1,6 @@
-import { type CategoryInference } from '~/server/lib/interfaces/categoryInference.interface'
+import type { CategoryInference } from '~/server/lib/interfaces'
 
-export interface ChallengeComponentHistory {
+export default interface ChallengeComponentHistory {
     sentence: string
     inferences: CategoryInference[]
     response: string
