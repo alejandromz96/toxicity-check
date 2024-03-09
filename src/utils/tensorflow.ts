@@ -1,5 +1,5 @@
 import type * as toxicity from '@tensorflow-models/toxicity'
-import type { CategoryInference, InferenceProbability } from '~/server/lib'
+import type { CategoryInference, InferenceProbability } from '~/server/lib/interfaces'
 
 export function getSentenceToxicity(
     sentence: string | string[],
