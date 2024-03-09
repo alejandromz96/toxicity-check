@@ -5,9 +5,9 @@ import type { WithChildren } from '~/lib/types'
 import { Footer, Background, Header } from './'
 
 const Layout: FC<WithChildren> = ({ children }) => (
-    <div className='h-screen'>
+    <div className='h-screen md:overflow-hidden'>
         <Header />
-            <main className='h-full w-full'>
+            <main className='h-full'>
                 <Background />
                 <div className="relative h-full">{children}</div>
             </main>

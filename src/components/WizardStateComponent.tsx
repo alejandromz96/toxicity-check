@@ -3,6 +3,7 @@ import { useWizardState } from '~/hooks'
 import type { WizardStateType } from '~/lib'
 import ChallengeComponent from './ChallengeComponent'
 import { PresentationComponent } from '.'
+import styles from '../styles/Wizard.module.css'
 
 // TODO: Use real components (to remove)
 export interface ComponentsProps {
@@ -30,9 +31,22 @@ const stateComponents: Record<WizardStateType, ({ nextState }: ComponentsProps) 
 const WizardStateComponent = (): JSX.Element => {
     const { wizardState, nextState } = useWizardState()
 
+    enum WizardTitle {
+        'presentation' = 'PROJECT PRESENTATION',
+        'challenge' = 'CHALLENGE',
+        'results' = 'RESULTS',
+    }
+
     const body = createElement(stateComponents[wizardState], { nextState })
 
-    return <div className="flex flex-col items-center justify-center h-full">{body}</div>
+    return (
+        <div className='h-3/4 flex flex-col items-center pt-8'>
+            <h1 className={styles.title}>{WizardTitle[wizardState]}</h1>
+            <div className={styles.box}>
+                {body}
+            </div>
+        </div>
+    )
 }
 
 export default WizardStateComponent
