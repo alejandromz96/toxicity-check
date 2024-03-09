@@ -1,1 +1,1 @@
-export { default as InferenceCategories } from './inferenceCategories.enum'
+export * from './inferenceCategories.enum'

@@ -1,10 +1,9 @@
 import React, { type JSX, useState } from 'react'
-import { ToxicTextComponent } from './ToxicTextComponent'
-import Crono from './crono'
 import { api } from '~/utils/api'
 import { useResultState } from '~/hooks'
-import type { CategoryInference } from '~/server/lib/interfaces'
-import type { ComponentsProps } from './WizardStateComponent'
+import type { CategoryInference } from '~/server/lib'
+import { ToxicTextComponent, CronoComponent } from '~/components'
+import type { ComponentsProps } from '~/lib'
 
 interface ChallengeComponentHistory {
     sentence: string
@@ -63,7 +62,7 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
             <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
                 <div className="row-span-2">
                     {`Puntuation: ${puntuation}`}
-                    <Crono
+                    <CronoComponent
                         currentTime={currentTime}
                         setCurrentTime={setCurrentTime}
                         refreshInterval={11}
