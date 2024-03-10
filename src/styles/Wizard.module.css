@@ -2,12 +2,12 @@
   background: -webkit-linear-gradient(90deg, #26ce00, #a80eff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  @apply text-center pb-12 text-5xl font-medium tracking-wide leading-relaxed;
+  @apply text-center pb-4 md:pb-12 text-3xl md:text-5xl font-medium tracking-wide leading-relaxed;
 }
 
 .box {
   animation: blink 5s ease infinite;
-  @apply border border-solid border-[#f4ff3f] rounded-lg p-12 flex justify-between items-center w-2/3 h-full;
+  @apply border border-solid border-[#f4ff3f] rounded-lg p-4 md:p-12 flex justify-between items-center w-2/3 h-full;
 }
 
 @keyframes blink {
