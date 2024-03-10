@@ -18,7 +18,7 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
                 Start the <u className="decoration-purple-soft">Toxicity Check</u> to check it out!
             </span>
         </div>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-x-2 md:space-y-0">
+        <div className="flex flex-col md:flex-row space-y-2 md:space-x-2 md:space-y-0 lg:text-xl">
             {RULES.map((rule, index) => (
                 <div
                     className="flex flex-col space-y-2 w-full md:w-1/3 justify-center items-center text-yellow-text"
@@ -32,7 +32,7 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
             ))}
         </div>
         <button
-            className="rounded-lg py-1 md:py-4 px-2 md:px-6 transition ease-in-out delay-150 bg-purple-dark  hover:scale-125 hover:bg-purple-soft duration-300"
+            className="rounded-lg py-1 md:py-4 px-2 md:px-6 transition ease-in-out delay-150 bg-purple-dark  hover:scale-125 hover:bg-purple-soft duration-300 text-yellow-text lg:text-xl"
             onClick={(): void => nextState()}
         >
             START CHALLENGE

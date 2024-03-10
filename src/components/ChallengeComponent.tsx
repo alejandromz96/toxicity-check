@@ -34,7 +34,7 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     const [answerMap, setAnswerMap] = useState<Map<string, ChallengeComponentHistory>>(new Map())
     const [history, setHistory] = useState<ChallengeComponentHistory[]>([])
     const [currentTime, setCurrentTime] = useState(10000)
-    const [puntuation, setPuntuation] = useState(0)
+    const [, setPuntuation] = useState(0)
     const { setResultState } = useResultState()
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
@@ -58,10 +58,9 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     }
 
     return (
-        <div className="rounded min-w-85">
-            <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
-                <div className="row-span-2">
-                    {`Puntuation: ${puntuation}`}
+        <div>
+            <div className='w-full h-full'>
+                <div className='w-85 h-65'>
                     <CronoComponent
                         currentTime={currentTime}
                         setCurrentTime={setCurrentTime}
@@ -72,13 +71,13 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                         }}
                     />
                 </div>
-                <div className="row-span-9 overflow-y-auto w-full">
+                <div className='h-25 w-85'>
                     {history.map((history, index) => (
                         <div key={index}>{history.response}</div>
                     ))}
                 </div>
-                <div className="row-span-1 w-full mt-2">
-                    <ToxicTextComponent loading={false} asyncSubmit={sendInferenceAndUpdateResult} />
+                <div className='h-10 w-85'>
+                <ToxicTextComponent loading={false} asyncSubmit={sendInferenceAndUpdateResult} />
                 </div>
             </div>
         </div>

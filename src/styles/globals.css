@@ -1,7 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@font-face {
+  font-family: "monogram";   /*Can be any text*/
+  src: local("monogram"),
+    url("../fonts/monogram.ttf") format("truetype");
+}
 .link {
     @apply border-b border-solid hover:border-blue-500 hover:text-blue-500;
+}
+@layer base {
+  html {
+    font-family: "monogram";
+    font-size: large;
+  }
 }

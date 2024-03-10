@@ -22,14 +22,12 @@ const CronoComponent = ({
         const currentMillisString = currentTimeDate.getMilliseconds().toString().padStart(3, '0')
 
         return (
-            <div>
-                <div className="flex mb-2 justify-between" style={{ fontSize: '5vw' }}>
+                <div className="flex px-2 mb-2 justify-between text-yellow-text bg-yellow-text bg-opacity-30" style={{ fontSize: '7vw' }}>
                     {`${currentMinutesString} : ${currentSecondsString}`}
-                    <div style={{ fontSize: '2vw' }} className="ml-2">
+                    <div style={{ fontSize: '4vw' }} className="ml-2">
                         {currentMillisString}
                     </div>
                 </div>
-            </div>
         )
     }
 

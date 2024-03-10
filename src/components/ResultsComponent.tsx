@@ -2,7 +2,7 @@ import { FaceFrownIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
 import React, { type JSX } from 'react'
 import useResultState from '~/hooks/useResultState'
 import type { ChallengeComponentHistory } from '~/interfaces'
-import type { ComponentsProps } from './WizardStateComponent'
+import type { ComponentsProps } from '~/lib'
 import { InferenceCategories } from '~/server/lib/enums'
 
 interface Result {
