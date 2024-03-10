@@ -34,9 +34,12 @@ const PERSONAL_DATA: IPromoCard[] = [
         },
     },
     {
-        name: 'Alex',
+        name: 'Alejandro',
+        profileImage: 'https://avatars.githubusercontent.com/u/37580269?v=4',
+        description: 'Fullstack developer, T3 enjoyer',
         links: {
             github: 'https://github.com/alejandromz96/',
+            linkedIn: 'https://www.linkedin.com/in/alejandro-mu%C3%B1oz-6201991a7/',
         },
     },
     {
