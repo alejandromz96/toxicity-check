@@ -15,7 +15,7 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => {
         </div>
         <div className="flex flex-col md:flex-row space-y-2 md:space-x-2 md:space-y-0">
             {RULES.map((rule, index) => (
-                <div className="flex flex-col space-y-2 w-full md:w-1/3 justify-center items-center">
+                <div className="flex flex-col space-y-2 w-full md:w-1/3 justify-center items-center text-yellow-text" key={'rule ' + index}>
                     <span className="hidden md:flex text-bold text-2xl text-center">{index + 1}</span>
                     <div className="border-2 border-solid border-purple-soft rounded-lg w-full md:w-4/5 py-2 px-1 md:px-4 md:py-8 bg-slate-900 flex items-center justify-center text-center h-full">
                             {rule}
