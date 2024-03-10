@@ -29,10 +29,13 @@ const Background: FC = () => {
         }
     }, [])
 
-    const getBubbleClass = (bubbleIndex: number): string =>
-        `absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-${BUBBLES_ANIMATE_TRANSLATE[bubbleIndex]} rounded-full left-[${BUBBLES_POSITIONS[bubbleIndex]}%] w-${BUBBLE_SIZE[bubbleIndex]} h-${BUBBLE_SIZE[bubbleIndex]}`
-    const getBubble = (delayIndex: number, index: number): JSX.Element | undefined =>
-        delays[delayIndex] ? <li key={index} className={getBubbleClass(index)} /> : undefined
+    const getBubble = (delayIndex: number, bubbleIndex: number): JSX.Element | undefined =>
+        delays[delayIndex] ? (
+            <li
+                key={bubbleIndex}
+                className={`absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-${BUBBLES_ANIMATE_TRANSLATE[bubbleIndex]} rounded-full left-[${BUBBLES_POSITIONS[bubbleIndex]}%] w-${BUBBLE_SIZE[bubbleIndex]} h-${BUBBLE_SIZE[bubbleIndex]}`}
+            />
+        ) : undefined
 
     return (
         <div className="bg-gradient-to-tl from-gray-800 to-slate-950 w-full h-full fixed">

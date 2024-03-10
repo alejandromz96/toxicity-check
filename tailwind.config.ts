@@ -27,9 +27,6 @@ export default {
                 'purple-dark': '#3a2254',
                 'purple-soft': '#644f7a',
             },
-            listStyleImage: {
-                toxic: 'url("/img/toxic.png")',
-            },
         },
     },
     plugins: [],
