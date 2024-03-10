@@ -47,7 +47,7 @@ const CronoComponent = ({
         }
     }, [callbackOnEnd, currentTime, refreshInterval, running, setCurrentTime])
 
-    return <div className="w-100 h-100 flex grow justify-center py-2 m-2">{getTimeBox()}</div>
+    return <div className="flex grow justify-center px-2">{getTimeBox()}</div>
 }
 
 export default CronoComponent
