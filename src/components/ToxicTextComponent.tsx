@@ -6,7 +6,7 @@ type Props = {
     loading: boolean // flag to prevent user for entering inputs before the app is ready
 }
 
-export const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): React.JSX.Element => {
+const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): React.JSX.Element => {
     const [currentInput, setCurrentInput] = useState('')
 
     function submitCurrentInput(): void {
@@ -54,3 +54,5 @@ function Loading(): React.JSX.Element {
         </div>
     )
 }
+
+export default ToxicTextComponent
