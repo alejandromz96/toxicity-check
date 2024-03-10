@@ -40,11 +40,9 @@ const WizardStateComponent = (): JSX.Element => {
     const body = createElement(stateComponents[wizardState], { nextState })
 
     return (
-        <div className='h-3/4 flex flex-col items-center pt-8'>
+        <div className="h-3/4 flex flex-col items-center pt-8">
             <h1 className={styles.title}>{WizardTitle[wizardState]}</h1>
-            <div className={styles.box}>
-                {body}
-            </div>
+            <div className={styles.box}>{body}</div>
         </div>
     )
 }

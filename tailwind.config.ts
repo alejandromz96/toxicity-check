@@ -29,7 +29,7 @@ export default {
             },
             listStyleImage: {
                 toxic: 'url("/img/toxic.png")',
-              },
+            },
         },
     },
     plugins: [],
