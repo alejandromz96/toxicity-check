@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FireIcon, CogIcon } from '@heroicons/react/24/solid'
+import { CogIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 
 type Props = {
     asyncSubmit: (sentence: string) => void // async function to send current input to the inference endpoint
@@ -27,22 +27,25 @@ const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): React.JSX.
     }
 
     return (
-        <div className="flex items-center w-full px-2 py-2 rounded-lg bg-white">
-            <input
-                className="block mx-2 p-2.5 w-full text-sm rounded-lg"
-                placeholder="Be toxic!"
-                onChange={(ev) => setCurrentInput(ev.target.value)}
-                onPaste={(ev) => ev.preventDefault()} // Prevent copy pasting things
-                onKeyUp={onEnterSubmitInput}
-                value={currentInput}
-            />
-            <button
-                type="submit"
-                className="inline-flex justify-center p-2 rounded-full cursor-pointer"
-                onClick={submitCurrentInput}
-            >
-                <FireIcon className="w-5 h-5" stroke="red" fill="purple" />
-            </button>
+        <div className="w-full">
+            <div className="flex items-center px-2 py-2 rounded-lg bg-yellow-text bg-opacity-30 text-yellow-text ">
+                <input
+                    className="block mx-2 p-2.5 w-full text-lg rounded-lg bg-transparent outline-none"
+                    placeholder="Be toxic!"
+                    onChange={(ev) => setCurrentInput(ev.target.value)}
+                    onPaste={(ev) => ev.preventDefault()} // Prevent copy pasting things
+                    onKeyUp={onEnterSubmitInput}
+                    value={currentInput}
+                    style={{ fontFamily: 'monogram' }}
+                />
+                <button
+                    type="submit"
+                    className="inline-flex justify-center p-2 rounded-full cursor-pointer"
+                    onClick={submitCurrentInput}
+                >
+                    <ChevronRightIcon className="w-5 h-5 text-yellow-text" />
+                </button>
+            </div>
         </div>
     )
 }

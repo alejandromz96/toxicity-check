@@ -22,10 +22,10 @@ export const postRouter = createTRPCRouter({
 
     getSentenceInference: publicProcedure
         .input(z.object({ sentence: z.string() }))
-        .mutation(async ({ input }) => getSentenceToxicity(input.sentence)),
+        .mutation(async ({ input, ctx }) => getSentenceToxicity(input.sentence, ctx.loadedModel)),
 
     getSentencesInference: publicProcedure
         .input(z.object({ sentence: z.array(z.string()) }))
-        .mutation(async ({ input }) => getSentenceToxicity(input.sentence)),
+        .mutation(async ({ input, ctx }) => getSentenceToxicity(input.sentence, ctx.loadedModel)),
     getLatest: publicProcedure.query(() => post),
 })

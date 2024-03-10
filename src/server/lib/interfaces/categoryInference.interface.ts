@@ -1,6 +1,6 @@
-import type { InferenceProbability } from './inferenceProbability.interface'
+import type { InferenceProbability } from '.'
 
-export type CategoryInference = {
+export default interface CategoryInference {
     label: string
     results: InferenceProbability[]
 }

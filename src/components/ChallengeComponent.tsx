@@ -1,7 +1,8 @@
-import React, { type JSX, useState, useEffect } from 'react'
-import { ToxicTextComponent, CronoComponent, LoaderComponent } from '~/components'
-import { type CategoryInference } from '~/server/lib'
-import { api, loadModel } from '~/utils'
+import React, { type JSX, useState } from 'react'
+import { api } from '~/utils/api'
+import { useResultState } from '~/hooks'
+import type { CategoryInference } from '~/server/lib'
+import { ToxicTextComponent, CronoComponent } from '~/components'
 import type { ComponentsProps } from '~/lib'
 
 interface ChallengeComponentHistory {
@@ -32,17 +33,9 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
 
     const [answerMap, setAnswerMap] = useState<Map<string, ChallengeComponentHistory>>(new Map())
     const [history, setHistory] = useState<ChallengeComponentHistory[]>([])
-    const [modelReady, setModelReady] = useState(false)
     const [currentTime, setCurrentTime] = useState(10000)
-    const [puntuation, setPuntuation] = useState(0)
-
-    useEffect(() => {
-        if (!modelReady) {
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            loadModel().then(() => setModelReady(true))
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const [, setPuntuation] = useState(0)
+    const { setResultState } = useResultState()
 
     const sendInferenceAndUpdateResult = (sentence: string): void => {
         if (sentence) {
@@ -64,30 +57,30 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
         }
     }
 
-    return modelReady ? (
-        <div className="rounded min-w-85">
-            <div className="grid grid-rows-12 grid-flow-col justify-items-center gap-1 max-h-screen min-w-96">
-                <div className="row-span-2">
-                    {`Puntuation: ${puntuation}`}
+    return (
+        <div>
+            <div className="w-full h-full">
+                <div className="w-85 h-65">
                     <CronoComponent
                         currentTime={currentTime}
                         setCurrentTime={setCurrentTime}
                         refreshInterval={11}
-                        callbackOnEnd={nextState}
+                        callbackOnEnd={() => {
+                            setResultState(history)
+                            nextState()
+                        }}
                     />
                 </div>
-                <div className="row-span-9 overflow-y-auto w-full">
+                <div className="h-25 w-85">
                     {history.map((history, index) => (
                         <div key={index}>{history.response}</div>
                     ))}
                 </div>
-                <div className="row-span-1 w-full mt-2">
+                <div className="h-10 w-85">
                     <ToxicTextComponent loading={false} asyncSubmit={sendInferenceAndUpdateResult} />
                 </div>
             </div>
         </div>
-    ) : (
-        <LoaderComponent />
     )
 }
 

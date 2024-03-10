@@ -23,6 +23,10 @@ When the time is up you will be able to see how you did and your most and least 
 -   [Tailwindcss](https://tailwindcss.com/)
 -   [Heroicons](https://heroicons.com/)
 
+## Assets used
+
+-   [Monogram font](https://datagoblin.itch.io/monogram)
+
 ## How it works?
 
 We use one of the pretrained models of Tensorflow.js [toxicity](https://github.com/tensorflow/tfjs-models/tree/master/toxicity) which allows you to check if the sentence is toxic. Also, this model has different categories of toxicity like threat, insult, etc...

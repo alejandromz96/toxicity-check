@@ -1,6 +1,7 @@
 export { default as PresentationComponent } from './PresentationComponent'
-export { default as LoaderComponent } from './LoaderComponent'
 export { default as ChallengeComponent } from './ChallengeComponent'
+export { default as ResultsComponent } from './ResultsComponent'
+export { default as LoaderComponent } from './LoaderComponent'
 export { default as ToxicTextComponent } from './ToxicTextComponent'
 export { default as WizardStateComponent } from './WizardStateComponent'
 export { default as CronoComponent } from './CronoComponent'

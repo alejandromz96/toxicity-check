@@ -1,4 +1,4 @@
-export enum InferenceCategories {
+enum InferenceCategories {
     SevereToxicity = 'severe_toxicity',
     Obscene = 'obscene',
     Insult = 'insult',
@@ -7,3 +7,5 @@ export enum InferenceCategories {
     Threat = 'threat',
     Toxicity = 'toxicity',
 }
+
+export default InferenceCategories
