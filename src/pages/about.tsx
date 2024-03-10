@@ -1,6 +1,12 @@
 import { createElement, type JSX } from 'react'
 import { useRouter } from 'next/router'
-import { UserCircleIcon, AtSymbolIcon, ComputerDesktopIcon, CommandLineIcon } from '@heroicons/react/24/solid'
+import {
+    UserCircleIcon,
+    AtSymbolIcon,
+    ComputerDesktopIcon,
+    CommandLineIcon,
+    ArrowLeftCircleIcon,
+} from '@heroicons/react/24/solid'
 
 type MediaUrlType = 'linkedIn' | 'github' | 'portfolio' | 'twitter'
 
@@ -12,10 +18,10 @@ interface IPromoCard {
 }
 
 const iconWithMedia: Record<MediaUrlType, JSX.Element> = {
-    linkedIn: createElement(ComputerDesktopIcon, { className: 'w-5 h-5' }),
-    github: createElement(CommandLineIcon, { className: 'w-5 h-5' }),
-    portfolio: createElement(UserCircleIcon, { className: 'w-5 h-5' }),
-    twitter: createElement(AtSymbolIcon, { className: 'w-5 h-5' }),
+    linkedIn: createElement(ComputerDesktopIcon, { className: 'w-3 md:w-5 h-3 md:h-5' }),
+    github: createElement(CommandLineIcon, { className: 'w-3 md:w-5 h-3 md:h-5' }),
+    portfolio: createElement(UserCircleIcon, { className: 'w-3 md:w-5 h-3 md:h-5' }),
+    twitter: createElement(AtSymbolIcon, { className: 'w-3 md:w-5 h-3 md:h-5' }),
 }
 
 const DEFAULT_IMAGE_PATH = '/default_image.png'
@@ -53,25 +59,25 @@ export default function AboutPage(): JSX.Element {
         await router.push('/')
     }
     return (
-        <div className="flex flex-col max-h-3/4 h-full w-full space-y-6 pt-4 text-gray-400">
+        <div className="flex flex-col max-h-3/4 h-full w-full space-y-4 text-gray-400">
             <span className="text-2xl text-center">ABOUT PAGE</span>
-            <div className="flex flex-col justify-center items-center space-y-8 w-full">
+            <div className="flex flex-col justify-center items-center space-y-2 md:space-y-4 w-full">
                 {PERSONAL_DATA.map((data, index) => (
                     <div
-                        className="flex flex-col border-2 border-solid rounded-xl md:p-4 w-full h-fit md:space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900 max-w-96"
+                        className="flex flex-col border-2 border-solid rounded-xl md:p-2 w-full h-fit md:space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900 max-w-96"
                         key={index}
                     >
-                        <span className="text-bold text-center text-xl border-b border-solid">{data.name}</span>
+                        <span className="text-bold text-center text-xl md:border-b md:border-solid">{data.name}</span>
                         <div className="flex flex-col items-center md:items-start md:flex-row space-y-2 md:space-y-0 md:space-x-6">
                             <img
                                 src={data.profileImage ?? DEFAULT_IMAGE_PATH}
                                 alt={data.name}
-                                className="rounded-full w-32 h-32"
+                                className="rounded-full w-10 md:w-32 h-10 md:h-32"
                             />
-                            <div className="flex flex-col space-y-3 items-start">
+                            <div className="flex flex-row flex-wrap md:flex-col justify-center items-center md:items-start space-x-2 md:space-x-0">
                                 {Object.entries(data.links).map(([key, value]) => (
                                     <div
-                                        className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400"
+                                        className="flex flex-row space-x-1 justify-center items-center hover:text-cyan-400"
                                         key={key}
                                     >
                                         {iconWithMedia[key as MediaUrlType]}
@@ -82,11 +88,16 @@ export default function AboutPage(): JSX.Element {
                                 ))}
                             </div>
                         </div>
-                        {data.description && <span className="text-center text-lg">{data.description}</span>}
+                        {data.description && <span className="text-center md:text-lg">{data.description}</span>}
                     </div>
                 ))}
             </div>
-            <button onClick={handleOnclick}>Return to Home page</button>
+            <div className="flex flex-row justify-center items-center space-x-2">
+                <ArrowLeftCircleIcon className="w-5 h-5" />
+                <button onClick={handleOnclick} className="border-b border-r-2 px-2">
+                    Return Home
+                </button>
+            </div>
         </div>
     )
 }
