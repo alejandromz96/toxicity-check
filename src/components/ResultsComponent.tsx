@@ -169,7 +169,10 @@ const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                 >
                     TRY AGAIN
                 </button>
-                <button className="border-b border-yellow-text hover:text-lg duration-1000 md:text-xl" onClick={handleOnclick}>
+                <button
+                    className="border-b border-yellow-text hover:text-lg duration-1000 md:text-xl"
+                    onClick={handleOnclick}
+                >
                     Know more about us
                 </button>
             </div>
