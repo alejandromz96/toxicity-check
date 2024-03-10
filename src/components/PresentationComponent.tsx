@@ -15,7 +15,7 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
                 Do you want to check your <u className="decoration-purple-soft">toxicity</u> level?
             </span>
             <span className="text-md md:text-xl">
-                Start the <u className="decoration-purple-soft">Toxicity Check</u> to check it out!
+                Start the <u className="decoration-purple-soft">Toxicity Challenge</u> to check it out!
             </span>
         </div>
         <div className="flex flex-col md:flex-row space-y-2 md:space-x-2 md:space-y-0 lg:text-xl">

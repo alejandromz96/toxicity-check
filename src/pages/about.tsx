@@ -65,7 +65,7 @@ export default function AboutPage(): JSX.Element {
     }
     return (
         <div className="flex flex-col max-h-3/4 h-full w-full space-y-4 text-gray-400">
-            <span className="text-2xl text-center">ABOUT PAGE</span>
+            <span className="text-2xl text-center">ABOUT US</span>
             <div className="flex flex-col justify-center items-center space-y-2 md:space-y-4 w-full">
                 {PERSONAL_DATA.map((data, index) => (
                     <div
@@ -73,11 +73,11 @@ export default function AboutPage(): JSX.Element {
                         key={index}
                     >
                         <span className="text-bold text-center text-xl md:border-b md:border-solid">{data.name}</span>
-                        <div className="flex flex-col items-center md:items-start md:flex-row space-y-2 md:space-y-0 md:space-x-6">
+                        <div className="flex flex-col items-center md:items-start md:flex-row space-y-1 md:space-y-0 md:space-x-6">
                             <img
                                 src={data.profileImage ?? DEFAULT_IMAGE_PATH}
                                 alt={data.name}
-                                className="rounded-full w-10 md:w-32 h-10 md:h-32"
+                                className="rounded-full w-10 md:w-24 h-10 md:h-24"
                             />
                             <div className="flex flex-row flex-wrap md:flex-col justify-center items-center md:items-start space-x-2 md:space-x-0">
                                 {Object.entries(data.links).map(([key, value]) => (
@@ -92,8 +92,8 @@ export default function AboutPage(): JSX.Element {
                                     </div>
                                 ))}
                             </div>
+                            {data.description && <span className="text-center md:text-lg">{data.description}</span>}
                         </div>
-                        {data.description && <span className="text-center md:text-lg">{data.description}</span>}
                     </div>
                 ))}
             </div>

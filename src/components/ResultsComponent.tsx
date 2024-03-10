@@ -117,10 +117,10 @@ const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => {
     return (
         <section className="flex flex-col items-center justify-around md:justify-between text-center w-full h-full text-yellow-text space-y-4">
             <div className="flex flex-col items-center space-y-2">
-                <span className="text-3xl animate-bounce">FINAL SCORE {totalPuntuation}</span>
+                <span className="text-3xl md:text-6xl animate-bounce">FINAL SCORE {totalPuntuation}</span>
                 {firstToxicMessage && (
                     <div>
-                        <span className="font-semibold text-xl">First place </span>
+                        <span className="font-semibold text-xl md:text-4xl">First place </span>
                         <span className="bg-yellow-text bg-opacity-15 rounded-sm p-1">
                             {firstToxicMessage.sentence}
                         </span>
@@ -129,7 +129,7 @@ const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                 )}
                 {secondToxicMessage && (
                     <div>
-                        <span className="font-semibold text-lg">Second place </span>
+                        <span className="font-semibold text-lg md:text-3xl">Second place </span>
                         <span className="bg-yellow-text bg-opacity-15 rounded-sm p-1">
                             {secondToxicMessage.sentence}
                         </span>
@@ -138,7 +138,7 @@ const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                 )}
                 {thirdToxicMessage && (
                     <div>
-                        <span className="font-semibold">Third place </span>
+                        <span className="font-semibold md:text-3xl">Third place </span>
                         <span className="bg-yellow-text bg-opacity-15 rounded-sm p-1">
                             {thirdToxicMessage.sentence}
                         </span>
@@ -147,7 +147,7 @@ const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                 )}
                 {lastToxicMessage && (
                     <div className="mt-5 hidden md:flex md:items-center md:space-x-2">
-                        <span className="font-semibold">Less toxic </span>
+                        <span className="font-semibold md:text-2xl">Least toxic message</span>
                         <span className="bg-yellow-text bg-opacity-15 rounded-sm px-1">
                             {lastToxicMessage.sentence}
                         </span>
@@ -157,19 +157,19 @@ const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => {
             <div className="flex flex-col items-center space-y-3">
                 <a
                     href={X_URL_TO_SHARE_SCORE(totalPuntuation)}
-                    className="animate-pulse text-xl"
+                    className="animate-pulse text-xl md:text-2xl"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     Share your score on X
                 </a>
                 <button
-                    className="rounded-lg border border-yellow-text px-2 py-1 bg-gray-800 bg-opacity-30 hover:bg-gray-900 duration-1000"
+                    className="rounded-lg border border-yellow-text px-2 py-1 bg-gray-800 bg-opacity-30 hover:bg-gray-900 duration-1000 md:text-xl"
                     onClick={(): void => nextState()}
                 >
                     TRY AGAIN
                 </button>
-                <button className="border-b border-yellow-text hover:text-lg duration-1000" onClick={handleOnclick}>
+                <button className="border-b border-yellow-text hover:text-lg duration-1000 md:text-xl" onClick={handleOnclick}>
                     Know more about us
                 </button>
             </div>
