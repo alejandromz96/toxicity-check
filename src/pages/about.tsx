@@ -1,20 +1,23 @@
-import type { JSX } from 'react'
+import type { ForwardRefExoticComponent, JSX, RefAttributes, SVGProps } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { UserCircleIcon, AtSymbolIcon, ComputerDesktopIcon, CommandLineIcon } from '@heroicons/react/24/solid'
 
-interface IMediaUrls {
-    linkedIn?: string
-    github?: string
-    portfolio?: string
-    twitter?: string
-}
+type MediaUrlType = 'linkedIn' | 'github' | 'portfolio' | 'twitter'
 
 interface IPromoCard {
     name: string
     profileImage?: string
     description?: string
-    links: IMediaUrls
+    links: Partial<Record<MediaUrlType, string>>
+}
+
+// TODO: use this to set the icon
+const iconWithMedia: Record<MediaUrlType, ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, "ref"> & { title?: string | undefined; titleId?: string | undefined; } & RefAttributes<SVGSVGElement>>> = {
+    'linkedIn': ComputerDesktopIcon,
+    'github': CommandLineIcon,
+    'portfolio': UserCircleIcon,
+    'twitter': AtSymbolIcon,
 }
 
 const DEFAULT_IMAGE_PATH = '/default_image.png'
@@ -56,7 +59,7 @@ export default function AboutPage(): JSX.Element {
             <span className="text-2xl text-center">ABOUT PAGE</span>
             <div className="flex flex-col space-y-8">
                 {PERSONAL_DATA.map((data, index) => (
-                    <div className="flex flex-col border-2 border-solid rounded-xl p-4 w-full h-fit space-y-4 hover:shadow-lg hover:shadow-emerald-500" key={index}>
+                    <div className="flex flex-col border-2 border-solid rounded-xl p-4 w-full h-fit space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900" key={index}>
                         <span className="text-bold text-center text-xl border-b border-solid">{data.name}</span>
                         <div className="flex flex-row space-x-6">
                             {data.profileImage ? (
@@ -64,7 +67,7 @@ export default function AboutPage(): JSX.Element {
                                     src={data.profileImage}
                                     alt={data.name}
                                     width={'40%'}
-                                    style={{ borderRadius: '100%' }}
+                                    className='rounded-full'
                                 />
                             ) : (
                                 <Image
@@ -72,11 +75,19 @@ export default function AboutPage(): JSX.Element {
                                     alt={data.name}
                                     width={100}
                                     height={66}
-                                    style={{ borderRadius: '100%' }}
+                                    className='rounded-full'
                                 />
                             )}
                             <div className="flex flex-col space-y-3 items-start">
-                                {data.links.portfolio && (
+                            {Object.entries(data.links).map(([key, value]) => (
+                                <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400" key={key}>
+                                    <ComputerDesktopIcon className="w-5 h-5" />
+                                    <a href={value} target="_blank" rel="noopener noreferrer" className='link'>
+                                        {key}
+                                    </a>
+                                </div>
+                            ))}
+                                {/* {data.links.portfolio && (
                                     <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400">
                                         <ComputerDesktopIcon className="w-5 h-5" />
                                         <a href={data.links.portfolio} target="_blank" rel="noopener noreferrer" className='link'>
@@ -107,7 +118,7 @@ export default function AboutPage(): JSX.Element {
                                             Twitter
                                         </a>
                                     </div>
-                                )}
+                                )} */}
                             </div>
                         </div>
                         {data.description && (
