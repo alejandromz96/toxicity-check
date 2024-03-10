@@ -1,7 +1,7 @@
 import { useEffect, type JSX } from 'react'
 import Head from 'next/head'
-import { api } from '~/utils/api'
-import WizardStateComponent from '~/components/WizardStateComponent'
+import { api } from '~/utils'
+import { WizardStateComponent } from '~/components'
 
 const Home = (): JSX.Element => {
     const inference = api.post.getSentenceInference.useMutation()
