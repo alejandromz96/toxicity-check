@@ -30,7 +30,7 @@ const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): React.JSX.
         <div className="w-full">
             <div className="flex items-center px-2 py-2 rounded-lg bg-yellow-text bg-opacity-30 text-yellow-text ">
                 <input
-                    className="block mx-2 p-2.5 w-full text-lg rounded-lg bg-transparent outline-none"
+                    className="block mx-2 p-2.5 w-full text-2xl rounded-lg bg-transparent outline-none"
                     placeholder="Be toxic!"
                     onChange={(ev) => setCurrentInput(ev.target.value)}
                     onPaste={(ev) => ev.preventDefault()} // Prevent copy pasting things
