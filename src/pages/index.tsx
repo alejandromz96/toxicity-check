@@ -2,11 +2,9 @@ import { useEffect, type JSX } from 'react'
 import Head from 'next/head'
 import { api } from '~/utils'
 import { WizardStateComponent } from '~/components'
-import { useRouter } from 'next/router'
 
 const Home = (): JSX.Element => {
     const inference = api.post.getSentenceInference.useMutation()
-    const router = useRouter()
 
     useEffect(() => {
         if (inference.data && inference.data.length > 0) {
@@ -14,10 +12,6 @@ const Home = (): JSX.Element => {
             console.log(inference.data)
         }
     }, [inference?.data])
-
-    const handleOnclick = async (): Promise<void> => {
-        await router.push('/about')
-    }
 
     // TODO: update meta tags URLs when logo is merged
     return (
@@ -44,7 +38,6 @@ const Home = (): JSX.Element => {
             </Head>
             <div className="h-full">
                 <WizardStateComponent />
-                <button onClick={handleOnclick}>Go to about page</button>
             </div>
         </>
     )
