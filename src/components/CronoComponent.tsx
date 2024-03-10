@@ -23,11 +23,10 @@ const CronoComponent = ({
 
         return (
             <div
-                className="flex px-2 mb-2 justify-between text-yellow-text bg-yellow-text bg-opacity-30"
-                style={{ fontSize: '7vw' }}
+                className="flex px-2 mb-2 text-yellow-text bg-opacity-30 text-nowrap lg:text-[7vw] text-6xl"
             >
                 {`${currentMinutesString} : ${currentSecondsString}`}
-                <div style={{ fontSize: '4vw' }} className="ml-2">
+                <div className="ml-2 relative right-0 text-3xl">
                     {currentMillisString}
                 </div>
             </div>
@@ -52,7 +51,7 @@ const CronoComponent = ({
         }
     }, [callbackOnEnd, currentTime, refreshInterval, running, setCurrentTime])
 
-    return <div className="w-100 h-100 px-10 py-2 m-2">{getTimeBox()}</div>
+    return <div className="w-100 h-100 flex grow justify-center py-2 m-2">{getTimeBox()}</div>
 }
 
 export default CronoComponent
