@@ -42,10 +42,10 @@ const Home = (): JSX.Element => {
 
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex flex-col space-y-6">
+            <div className="h-full">
                 <WizardStateComponent />
                 <button onClick={handleOnclick}>Go to about page</button>
-            </main>
+            </div>
         </>
     )
 }

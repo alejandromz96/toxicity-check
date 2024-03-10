@@ -1,26 +1,9 @@
 import { createElement, type JSX } from 'react'
 import { useWizardState } from '~/hooks'
-import { X_URL_TO_SHARE_SCORE, type WizardStateType, type ComponentsProps } from '~/lib'
-import { ChallengeComponent } from '~/components'
+import { X_URL_TO_SHARE_SCORE, type ComponentsProps, type WizardStateType } from '~/lib'
+import { PresentationComponent, ChallengeComponent } from '.'
+import styles from '../styles/Wizard.module.css'
 
-const WizardStateComponent = (): JSX.Element => {
-    const { wizardState, nextState } = useWizardState()
-    const body = createElement(stateComponents[wizardState], { nextState })
-    return <div className="flex flex-col items-center">{body}</div>
-}
-
-// TODO: Use real components (to remove)
-const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
-    <>
-        <h1 className="text-2xl">PROJECT PRESENTATION</h1>
-        <button
-            className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
-            onClick={(): void => nextState()}
-        >
-            START CHALLENGE
-        </button>
-    </>
-)
 const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => (
     // TODO: Update with real score
     <>
@@ -42,6 +25,25 @@ const stateComponents: Record<WizardStateType, ({ nextState }: ComponentsProps) 
     challenge: ChallengeComponent,
     results: ResultsComponent,
     presentation: PresentationComponent,
+}
+
+const WizardStateComponent = (): JSX.Element => {
+    const { wizardState, nextState } = useWizardState()
+
+    enum WizardTitle {
+        'presentation' = 'PROJECT PRESENTATION',
+        'challenge' = 'CHALLENGE',
+        'results' = 'RESULTS',
+    }
+
+    const body = createElement(stateComponents[wizardState], { nextState })
+
+    return (
+        <div className="h-3/4 flex flex-col items-center pt-8">
+            <h1 className={styles.title}>{WizardTitle[wizardState]}</h1>
+            <div className={styles.box}>{body}</div>
+        </div>
+    )
 }
 
 export default WizardStateComponent

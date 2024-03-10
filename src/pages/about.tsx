@@ -53,12 +53,12 @@ export default function AboutPage(): JSX.Element {
         await router.push('/')
     }
     return (
-        <div className="flex flex-col justify-around h-fit w-full space-y-4 max-w-96">
+        <div className="flex flex-col max-h-3/4 h-full w-full space-y-6 pt-4 text-gray-400">
             <span className="text-2xl text-center">ABOUT PAGE</span>
-            <div className="flex flex-col space-y-8">
+            <div className="flex flex-col justify-center items-center space-y-8 w-full">
                 {PERSONAL_DATA.map((data, index) => (
                     <div
-                        className="flex flex-col border-2 border-solid rounded-xl md:p-4 w-full h-fit md:space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900"
+                        className="flex flex-col border-2 border-solid rounded-xl md:p-4 w-full h-fit md:space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900 max-w-96"
                         key={index}
                     >
                         <span className="text-bold text-center text-xl border-b border-solid">{data.name}</span>

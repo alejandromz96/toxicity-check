@@ -1,12 +1,12 @@
 import type { AppType } from 'next/app'
 import { api } from '~/utils'
 import '~/styles/globals.css'
-import 'tailwindcss/tailwind.css'
+import { Layout } from '~/components'
 
 const MyApp: AppType = ({ Component, pageProps }) => (
-    <div className="main_styles">
+    <Layout>
         <Component {...pageProps} />
-    </div>
+    </Layout>
 )
 
 export default api.withTRPC(MyApp)
