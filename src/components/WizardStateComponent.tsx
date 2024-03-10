@@ -1,7 +1,7 @@
 import { createElement, type JSX } from 'react'
 import { useWizardState } from '~/hooks'
+import { X_URL_TO_SHARE_SCORE, type WizardStateType, type ComponentsProps } from '~/lib'
 import { ChallengeComponent } from '~/components'
-import type { ComponentsProps, WizardStateType } from '~/lib'
 
 const WizardStateComponent = (): JSX.Element => {
     const { wizardState, nextState } = useWizardState()
@@ -22,8 +22,13 @@ const PresentationComponent = ({ nextState }: ComponentsProps): JSX.Element => (
     </>
 )
 const ResultsComponent = ({ nextState }: ComponentsProps): JSX.Element => (
+    // TODO: Update with real score
     <>
         <h1 className="text-2xl">RESULTS</h1>
+        <span>Tweet to challenge friends</span>
+        <a href={X_URL_TO_SHARE_SCORE(1000)} target="_blank" rel="noopener noreferrer">
+            Share on X
+        </a>
         <button
             className="mt-10 rounded-md border border-gray-400 p-1.5 hover:bg-gray-900"
             onClick={(): void => nextState()}
