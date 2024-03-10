@@ -1,5 +1,6 @@
-import type { ComponentsProps } from './WizardStateComponent'
 import type { JSX } from 'react'
+
+import type { ComponentsProps } from '~/lib'
 
 const RULES: string[] = [
     'Think as toxic as you can',
