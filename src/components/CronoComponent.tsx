@@ -22,13 +22,9 @@ const CronoComponent = ({
         const currentMillisString = currentTimeDate.getMilliseconds().toString().padStart(3, '0')
 
         return (
-            <div
-                className="flex px-2 mb-2 text-yellow-text bg-opacity-30 text-nowrap lg:text-[7vw] text-6xl"
-            >
+            <div className="flex px-2 mb-2 text-yellow-text bg-opacity-30 text-nowrap lg:text-[7vw] text-6xl">
                 {`${currentMinutesString} : ${currentSecondsString}`}
-                <div className="ml-2 relative right-0 text-3xl">
-                    {currentMillisString}
-                </div>
+                <div className="ml-2 relative right-0 text-3xl">{currentMillisString}</div>
             </div>
         )
     }
