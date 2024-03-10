@@ -22,6 +22,14 @@ export default {
                 'translate-top-22': 'animateTop 22s linear infinite',
                 'translate-top-24': 'animateTop 24s linear infinite',
             },
+            colors: {
+                'yellow-text': '#95d95d',
+                'purple-dark': '#3a2254',
+                'purple-soft': '#644f7a',
+            },
+            listStyleImage: {
+                toxic: 'url("/img/toxic.png")',
+            },
         },
     },
     plugins: [],
