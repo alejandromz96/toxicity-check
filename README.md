@@ -6,6 +6,10 @@ This is meant to be satire, don't be toxic online.
 We are not promoting toxic behaviour online.
 If you are toxic online, go outside and seek professional help.
 
+## AS IS
+
+This software is distributed on an "AS IS" BASIS, ( and that means ) WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either expressed or implied.
+
 ## How toxic are you?
 
 How toxic can you be? Let's find out!
