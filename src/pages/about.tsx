@@ -1,5 +1,4 @@
-import { createElement, type ForwardRefExoticComponent, type JSX, type RefAttributes, type SVGProps } from 'react'
-import Image from 'next/image'
+import { createElement, type JSX } from 'react'
 import { useRouter } from 'next/router'
 import { UserCircleIcon, AtSymbolIcon, ComputerDesktopIcon, CommandLineIcon } from '@heroicons/react/24/solid'
 
@@ -13,10 +12,10 @@ interface IPromoCard {
 }
 
 const iconWithMedia: Record<MediaUrlType, JSX.Element> = {
-    'linkedIn': createElement(ComputerDesktopIcon, { className: 'w-5 h-5' }),
-    'github': createElement(CommandLineIcon, { className: 'w-5 h-5' }),
-    'portfolio': createElement(UserCircleIcon, { className: 'w-5 h-5' }),
-    'twitter': createElement(AtSymbolIcon, { className: 'w-5 h-5' }),
+    linkedIn: createElement(ComputerDesktopIcon, { className: 'w-5 h-5' }),
+    github: createElement(CommandLineIcon, { className: 'w-5 h-5' }),
+    portfolio: createElement(UserCircleIcon, { className: 'w-5 h-5' }),
+    twitter: createElement(AtSymbolIcon, { className: 'w-5 h-5' }),
 }
 
 const DEFAULT_IMAGE_PATH = '/default_image.png'
@@ -58,28 +57,32 @@ export default function AboutPage(): JSX.Element {
             <span className="text-2xl text-center">ABOUT PAGE</span>
             <div className="flex flex-col space-y-8">
                 {PERSONAL_DATA.map((data, index) => (
-                    <div className="flex flex-col border-2 border-solid rounded-xl md:p-4 w-full h-fit md:space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900" key={index}>
+                    <div
+                        className="flex flex-col border-2 border-solid rounded-xl md:p-4 w-full h-fit md:space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900"
+                        key={index}
+                    >
                         <span className="text-bold text-center text-xl border-b border-solid">{data.name}</span>
                         <div className="flex flex-col items-center md:items-start md:flex-row space-y-2 md:space-y-0 md:space-x-6">
                             <img
                                 src={data.profileImage ?? DEFAULT_IMAGE_PATH}
                                 alt={data.name}
-                                className='rounded-full w-32 h-32'
+                                className="rounded-full w-32 h-32"
                             />
                             <div className="flex flex-col space-y-3 items-start">
-                            {Object.entries(data.links).map(([key, value]) => (
-                                <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400" key={key}>
-                                    {iconWithMedia[key as MediaUrlType]}
-                                    <a href={value} target="_blank" rel="noopener noreferrer" className='link'>
-                                        {key}
-                                    </a>
-                                </div>
-                            ))}
+                                {Object.entries(data.links).map(([key, value]) => (
+                                    <div
+                                        className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400"
+                                        key={key}
+                                    >
+                                        {iconWithMedia[key as MediaUrlType]}
+                                        <a href={value} target="_blank" rel="noopener noreferrer" className="link">
+                                            {key}
+                                        </a>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        {data.description && (
-                            <span className='text-center text-lg'>{data.description}</span>
-                        )}
+                        {data.description && <span className="text-center text-lg">{data.description}</span>}
                     </div>
                 ))}
             </div>
