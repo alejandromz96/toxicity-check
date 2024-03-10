@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
-import type { WizardStateType } from '~/lib/types/wizardState.type'
+import type { WizardStateType } from '~/lib'
 
 let wizardState: WizardStateType = 'presentation'
 
