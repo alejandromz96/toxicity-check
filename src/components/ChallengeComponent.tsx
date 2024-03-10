@@ -59,8 +59,8 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
 
     return (
         <div>
-            <div className='w-full h-full'>
-                <div className='w-85 h-65'>
+            <div className="w-full h-full">
+                <div className="w-85 h-65">
                     <CronoComponent
                         currentTime={currentTime}
                         setCurrentTime={setCurrentTime}
@@ -71,13 +71,13 @@ const ChallengeComponent = ({ nextState }: ComponentsProps): JSX.Element => {
                         }}
                     />
                 </div>
-                <div className='h-25 w-85'>
+                <div className="h-25 w-85">
                     {history.map((history, index) => (
                         <div key={index}>{history.response}</div>
                     ))}
                 </div>
-                <div className='h-10 w-85'>
-                <ToxicTextComponent loading={false} asyncSubmit={sendInferenceAndUpdateResult} />
+                <div className="h-10 w-85">
+                    <ToxicTextComponent loading={false} asyncSubmit={sendInferenceAndUpdateResult} />
                 </div>
             </div>
         </div>

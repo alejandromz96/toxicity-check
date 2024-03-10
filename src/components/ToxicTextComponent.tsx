@@ -27,7 +27,7 @@ const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): React.JSX.
     }
 
     return (
-        <div className='w-full'>
+        <div className="w-full">
             <div className="flex items-center px-2 py-2 rounded-lg bg-yellow-text bg-opacity-30 text-yellow-text ">
                 <input
                     className="block mx-2 p-2.5 w-full text-lg rounded-lg bg-transparent outline-none"
@@ -36,14 +36,14 @@ const ToxicTextComponent = ({ asyncSubmit, loading = false }: Props): React.JSX.
                     onPaste={(ev) => ev.preventDefault()} // Prevent copy pasting things
                     onKeyUp={onEnterSubmitInput}
                     value={currentInput}
-                    style={{fontFamily: 'monogram'}}
+                    style={{ fontFamily: 'monogram' }}
                 />
                 <button
                     type="submit"
                     className="inline-flex justify-center p-2 rounded-full cursor-pointer"
                     onClick={submitCurrentInput}
                 >
-                    <ChevronRightIcon className="w-5 h-5 text-yellow-text"/>
+                    <ChevronRightIcon className="w-5 h-5 text-yellow-text" />
                 </button>
             </div>
         </div>
