@@ -26,7 +26,6 @@ const iconWithMedia: Record<MediaUrlType, JSX.Element> = {
 
 const DEFAULT_IMAGE_PATH = '/default_image.png'
 
-// TODO: Add personal data of the other teammates (:
 const PERSONAL_DATA: IPromoCard[] = [
     {
         name: 'CPL121',
