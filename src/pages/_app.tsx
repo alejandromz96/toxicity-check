@@ -1,5 +1,5 @@
-import { type AppType } from 'next/app'
-import { api } from '~/utils/api'
+import type { AppType } from 'next/app'
+import { api } from '~/utils'
 import '~/styles/globals.css'
 import 'tailwindcss/tailwind.css'
 

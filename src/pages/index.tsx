@@ -1,7 +1,7 @@
 import { useEffect, type JSX } from 'react'
 import Head from 'next/head'
-import { api } from '~/utils/api'
-import WizardStateComponent from '~/components/WizardStateComponent'
+import { api } from '~/utils'
+import { WizardStateComponent } from '~/components'
 import { useRouter } from 'next/router'
 
 const Home = (): JSX.Element => {
@@ -19,11 +19,24 @@ const Home = (): JSX.Element => {
         await router.push('/about')
     }
 
+    // TODO: update meta tags URLs when logo is merged
     return (
         <>
             <Head>
                 <title>TOXICITY CHECK</title>
-                <meta name="description" content="Toxicity check main page" />
+                <meta name="description" content="Get out your toxicity and get the best score you can." />
+                <meta name="keywords" content="Toxicity, Score, IA, Toxicity Check, Toxicity Meter, Online Toxicity, Challenge" />
+                <meta name="robots" content="index,follow" />
+
+                <meta property="og:title" content="Check how toxic are you online!" />
+                <meta property="og:description" content="Get out your toxicity and get the best score you can." />
+                <meta property="og:image" content="URL_de_la_imagen" />
+
+                <meta name="twitter:card" content="Check how toxic are you online!" />
+                <meta name="twitter:title" content="Check how toxic are you online!" />
+                <meta name="twitter:description" content="Get out your toxicity and get the best score you can." />
+                <meta name="twitter:image" content="URL_de_la_imagen" />
+
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex flex-col space-y-6">
