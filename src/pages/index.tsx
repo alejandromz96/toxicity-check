@@ -42,7 +42,7 @@ const Home = (): JSX.Element => {
 
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className="text-gray-400 h-full">
+            <div className="h-full">
                 <WizardStateComponent />
                 <button onClick={handleOnclick}>Go to about page</button>
             </div>
