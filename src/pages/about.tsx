@@ -1,6 +1,12 @@
 import { createElement, type JSX } from 'react'
 import { useRouter } from 'next/router'
-import { UserCircleIcon, AtSymbolIcon, ComputerDesktopIcon, CommandLineIcon, ArrowLeftCircleIcon } from '@heroicons/react/24/solid'
+import {
+    UserCircleIcon,
+    AtSymbolIcon,
+    ComputerDesktopIcon,
+    CommandLineIcon,
+    ArrowLeftCircleIcon,
+} from '@heroicons/react/24/solid'
 
 type MediaUrlType = 'linkedIn' | 'github' | 'portfolio' | 'twitter'
 
@@ -86,9 +92,11 @@ export default function AboutPage(): JSX.Element {
                     </div>
                 ))}
             </div>
-            <div className='flex flex-row justify-center items-center space-x-2'>
-                <ArrowLeftCircleIcon className='w-5 h-5' />
-                <button onClick={handleOnclick} className='border-b border-r-2 px-2'>Return to Home</button>
+            <div className="flex flex-row justify-center items-center space-x-2">
+                <ArrowLeftCircleIcon className="w-5 h-5" />
+                <button onClick={handleOnclick} className="border-b border-r-2 px-2">
+                    Return Home
+                </button>
             </div>
         </div>
     )
