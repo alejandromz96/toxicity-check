@@ -14,7 +14,7 @@ const WizardStateComponent = (): JSX.Element => {
     const { wizardState, nextState } = useWizardState()
 
     enum WizardTitle {
-        'presentation' = 'PROJECT PRESENTATION',
+        'presentation' = 'CHALLENGE INSTRUCTIONS',
         'challenge' = 'CHALLENGE',
         'results' = 'RESULTS',
     }
@@ -22,7 +22,7 @@ const WizardStateComponent = (): JSX.Element => {
     const body = createElement(stateComponents[wizardState], { nextState })
 
     return (
-        <div className="h-3/4 flex flex-col items-center md:pt-8">
+        <div className="h-3/4 flex flex-col items-center md:pt-4">
             <h1 className={styles.title}>{WizardTitle[wizardState]}</h1>
             <div className={styles.box}>{body}</div>
         </div>

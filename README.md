@@ -6,6 +6,10 @@ This is meant to be satire, don't be toxic online.
 We are not promoting toxic behaviour online.
 If you are toxic online, go outside and seek professional help.
 
+## AS IS
+
+This software is distributed on an "AS IS" BASIS, ( and that means ) WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either expressed or implied.
+
 ## How toxic are you?
 
 How toxic can you be? Let's find out!
@@ -35,6 +39,8 @@ The model is loaded on the context of tRPC ( part of the stack of T3 ) and we in
 
 ## About us
 
+-   [cpl121.eth](https://cpl121.eth.limo/)
+-   [Kelvin, Lord of Coffee](https://www.linkedin.com/in/jos%C3%A9-rom%C3%A1n-018566233/)
 -
--
--
+
+More info about us [here](https://toxicitycheck.vercel.app/about)

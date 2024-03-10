@@ -13,7 +13,7 @@ interface ChallengeComponentHistory {
     matchCount: number
 }
 
-const getHistoryLogMessage = (sentence: string, inferences: CategoryInference[]) => {
+const getHistoryLogMessage = (sentence: string, inferences: CategoryInference[]): string => {
     const flaggedInferences = inferences
         .filter((inference) => inference.results.some((result) => result.match))
         .map((inference) => inference.label)
