@@ -40,9 +40,11 @@ const PERSONAL_DATA: IPromoCard[] = [
         },
     },
     {
-        name: 'Pepe',
+        name: 'Kelvin, Lord Coffee',
+        description: 'Fullstack developer, likes coffee',
         links: {
             github: 'https://github.com/CodingAndCodingAgain/',
+            linkedIn: 'https://www.linkedin.com/in/jos%C3%A9-rom%C3%A1n-018566233/',
         },
     },
 ]
