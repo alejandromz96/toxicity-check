@@ -1,118 +1,43 @@
-import { useState, type FC, useEffect } from 'react'
+import { useState, type FC, useEffect, type JSX } from 'react'
+
+const DELAYS_TIMEOUTS: number[] = [0, 3000, 6000, 9000, 12000]
+const BUBBLES: number[] = [3, 0, 4, 1, 2, 4, 0, 2, 3, 0, 1, 3, 4, 1, 2, 4, 3, 0, 1, 3, 4, 1, 3, 0, 0, 2, 2, 4]
+const BUBBLES_POSITIONS: number[] = [
+    3, 3, 10, 10, 23, 23, 35, 35, 39, 39, 42, 42, 51, 51, 56, 56, 60, 60, 65, 65, 73, 73, 81, 81, 88, 97, 97,
+]
+const BUBBLES_ANIMATE_TRANSLATE: number[] = [
+    20, 20, 14, 14, 18, 18, 22, 22, 24, 24, 16, 16, 18, 18, 20, 20, 22, 22, 18, 18, 14, 14, 22, 22, 24, 24, 20, 20,
+]
+const BUBBLE_SIZE: number[] = [
+    36, 36, 28, 28, 40, 40, 24, 24, 20, 20, 32, 32, 28, 28, 36, 36, 24, 24, 20, 20, 44, 44, 16, 16, 28, 28, 36, 36,
+]
 
 const Background: FC = () => {
-    const [delay3, setDelay3] = useState(false)
-    const [delay6, setDelay6] = useState(false)
-    const [delay9, setDelay9] = useState(false)
-    const [delay12, setDelay12] = useState(false)
+    const [delays, setDelays] = useState([true, false, false, false, false])
     useEffect(() => {
-        const timer3 = setTimeout(() => {
-            setDelay3(true)
-        }, 3000)
-        const timer6 = setTimeout(() => {
-            setDelay6(true)
-        }, 6000)
-        const timer9 = setTimeout(() => {
-            setDelay9(true)
-        }, 9000)
-        const timer12 = setTimeout(() => {
-            setDelay12(true)
-        }, 12000)
-
+        const timers = DELAYS_TIMEOUTS.map((delay, index) =>
+            setTimeout(() => {
+                setDelays((currentDelays) => {
+                    const newDelays = [...currentDelays]
+                    newDelays[index] = true
+                    return newDelays
+                })
+            }, delay)
+        )
         return () => {
-            clearTimeout(timer3)
-            clearTimeout(timer6)
-            clearTimeout(timer9)
-            clearTimeout(timer12)
+            timers.forEach((timer) => clearTimeout(timer))
         }
     }, [])
+
+    const getBubbleClass = (bubbleIndex: number): string =>
+        `absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-${BUBBLES_ANIMATE_TRANSLATE[bubbleIndex]} rounded-full left-[${BUBBLES_POSITIONS[bubbleIndex]}%] w-${BUBBLE_SIZE[bubbleIndex]} h-${BUBBLE_SIZE[bubbleIndex]}`
+    const getBubble = (delayIndex: number, index: number): JSX.Element | undefined =>
+        delays[delayIndex] ? <li key={index} className={getBubbleClass(index)} /> : undefined
+
     return (
         <div className="bg-gradient-to-tl from-gray-800 to-slate-950 w-full h-full fixed">
-            <ul className="absolute top-0 left-0 w-full h-full overflow-hidden">
-                {delay9 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-20 rounded-full left-[3%] w-36 h-36 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {true && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-20 rounded-full left-[3%] w-36 h-36 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay12 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-14 rounded-full left-[10%] w-28 h-28 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay3 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-14 rounded-full left-[10%] w-28 h-28 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay6 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-18 rounded-full left-[23%] w-40 h-40 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay12 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-18 rounded-full left-[23%] w-40 h-40 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {true && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-22 rounded-full left-[35%] w-24 h-24 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay6 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-22 rounded-full left-[35%] w-24 h-24 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay9 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-24 rounded-full left-[39%] w-20 h-20 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {true && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-24 rounded-full left-[39%] w-20 h-20 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay3 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-16 rounded-full left-[42%] w-32 h-32 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay9 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-16 rounded-full left-[42%] w-32 h-32 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay12 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-18 rounded-full left-[51%] w-28 h-28 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay3 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-18 rounded-full left-[51%] w-28 h-28 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay6 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-20 rounded-full left-[56%] w-36 h-36 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay12 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-20 rounded-full left-[56%] w-36 h-36 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay9 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-22 rounded-full left-[60%] w-24 h-24 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {true && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-22 rounded-full left-[60%] w-24 h-24 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay3 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-18 rounded-full left-[65%] w-20 h-20 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay9 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-18 rounded-full left-[65%] w-20 h-20 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay12 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-14 rounded-full left-[73%] w-44 h-44 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay3 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-14 rounded-full left-[73%] w-44 h-44 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay9 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-22 rounded-full left-[81%] w-16 h-16 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {true && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-22 rounded-full left-[81%] w-16 h-16 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {true && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-24 rounded-full left-[88%] w-28 h-28 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay6 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-24 rounded-full left-[88%] w-28 h-28 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay6 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-20 rounded-full left-[97%] w-36 h-36 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
-                {delay12 && (
-                    <li className="absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-20 rounded-full left-[97%] w-36 h-36 origin-center hover:bg-fuchsia-800 hover:bg-opacity-20 hover:scale-110 duration-1000"></li>
-                )}
+            <ul className="absolute top-0 left-0 w-full h-full">
+                {BUBBLES.map((bubbleDelay, index) => getBubble(bubbleDelay, index))}
             </ul>
         </div>
     )
