@@ -1,4 +1,4 @@
-import type { ForwardRefExoticComponent, JSX, RefAttributes, SVGProps } from 'react'
+import { createElement, type ForwardRefExoticComponent, type JSX, type RefAttributes, type SVGProps } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { UserCircleIcon, AtSymbolIcon, ComputerDesktopIcon, CommandLineIcon } from '@heroicons/react/24/solid'
@@ -12,12 +12,11 @@ interface IPromoCard {
     links: Partial<Record<MediaUrlType, string>>
 }
 
-// TODO: use this to set the icon
-const iconWithMedia: Record<MediaUrlType, ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, "ref"> & { title?: string | undefined; titleId?: string | undefined; } & RefAttributes<SVGSVGElement>>> = {
-    'linkedIn': ComputerDesktopIcon,
-    'github': CommandLineIcon,
-    'portfolio': UserCircleIcon,
-    'twitter': AtSymbolIcon,
+const iconWithMedia: Record<MediaUrlType, JSX.Element> = {
+    'linkedIn': createElement(ComputerDesktopIcon, { className: 'w-5 h-5' }),
+    'github': createElement(CommandLineIcon, { className: 'w-5 h-5' }),
+    'portfolio': createElement(UserCircleIcon, { className: 'w-5 h-5' }),
+    'twitter': createElement(AtSymbolIcon, { className: 'w-5 h-5' }),
 }
 
 const DEFAULT_IMAGE_PATH = '/default_image.png'
@@ -59,66 +58,23 @@ export default function AboutPage(): JSX.Element {
             <span className="text-2xl text-center">ABOUT PAGE</span>
             <div className="flex flex-col space-y-8">
                 {PERSONAL_DATA.map((data, index) => (
-                    <div className="flex flex-col border-2 border-solid rounded-xl p-4 w-full h-fit space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900" key={index}>
+                    <div className="flex flex-col border-2 border-solid rounded-xl md:p-4 w-full h-fit md:space-y-4 hover:shadow-lg hover:shadow-emerald-500 bg-opacity-60 bg-slate-900" key={index}>
                         <span className="text-bold text-center text-xl border-b border-solid">{data.name}</span>
-                        <div className="flex flex-row space-x-6">
-                            {data.profileImage ? (
-                                <img
-                                    src={data.profileImage}
-                                    alt={data.name}
-                                    width={'40%'}
-                                    className='rounded-full'
-                                />
-                            ) : (
-                                <Image
-                                    src={DEFAULT_IMAGE_PATH}
-                                    alt={data.name}
-                                    width={100}
-                                    height={66}
-                                    className='rounded-full'
-                                />
-                            )}
+                        <div className="flex flex-col items-center md:items-start md:flex-row space-y-2 md:space-y-0 md:space-x-6">
+                            <img
+                                src={data.profileImage ?? DEFAULT_IMAGE_PATH}
+                                alt={data.name}
+                                className='rounded-full w-32 h-32'
+                            />
                             <div className="flex flex-col space-y-3 items-start">
                             {Object.entries(data.links).map(([key, value]) => (
                                 <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400" key={key}>
-                                    <ComputerDesktopIcon className="w-5 h-5" />
+                                    {iconWithMedia[key as MediaUrlType]}
                                     <a href={value} target="_blank" rel="noopener noreferrer" className='link'>
                                         {key}
                                     </a>
                                 </div>
                             ))}
-                                {/* {data.links.portfolio && (
-                                    <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400">
-                                        <ComputerDesktopIcon className="w-5 h-5" />
-                                        <a href={data.links.portfolio} target="_blank" rel="noopener noreferrer" className='link'>
-                                            Portfolio
-                                        </a>
-                                    </div>
-                                )}
-                                {data.links.github && (
-                                    <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400">
-                                        <CommandLineIcon className="w-5 h-5" />
-                                        <a href={data.links.github} target="_blank" rel="noopener noreferrer" className='link'>
-                                            Github
-                                        </a>
-                                    </div>
-                                )}
-                                {data.links.linkedIn && (
-                                    <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400">
-                                        <UserCircleIcon className="w-5 h-5" />
-                                        <a href={data.links.linkedIn} target="_blank" rel="noopener noreferrer" className='link'>
-                                            LinkedIn
-                                        </a>
-                                    </div>
-                                )}
-                                {data.links.twitter && (
-                                    <div className="flex flex-row space-x-2 justify-center items-center hover:text-cyan-400">
-                                        <AtSymbolIcon className="w-5 h-5" />
-                                        <a href={data.links.twitter} target="_blank" rel="noopener noreferrer" className='link'>
-                                            Twitter
-                                        </a>
-                                    </div>
-                                )} */}
                             </div>
                         </div>
                         {data.description && (
