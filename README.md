@@ -41,7 +41,7 @@ The model is loaded on the context of tRPC ( part of the stack of T3 ) and we in
 
 -   [cpl121.eth](https://cpl121.eth.limo/)
 -   [Kelvin, Lord of Coffee](https://www.linkedin.com/in/jos%C3%A9-rom%C3%A1n-018566233/)
--   [Kelvin, Lord of Coffee](https://www.linkedin.com/in/alejandro-mu%C3%B1oz-6201991a7/)
+-   [Alejandro, cosmere enjoyer](https://www.linkedin.com/in/alejandro-mu%C3%B1oz-6201991a7/)
 -
 
 More info about us [here](https://toxicitycheck.vercel.app/about)
