@@ -2,9 +2,11 @@ import { useEffect, type JSX } from 'react'
 import Head from 'next/head'
 import { api } from '~/utils'
 import { WizardStateComponent } from '~/components'
+import { useRouter } from 'next/router'
 
 const Home = (): JSX.Element => {
     const inference = api.post.getSentenceInference.useMutation()
+    const router = useRouter()
 
     useEffect(() => {
         if (inference.data && inference.data.length > 0) {
@@ -13,16 +15,37 @@ const Home = (): JSX.Element => {
         }
     }, [inference?.data])
 
+    const handleOnclick = async (): Promise<void> => {
+        await router.push('/about')
+    }
+
+    // TODO: update meta tags URLs when logo is merged
     return (
         <>
             <Head>
                 <title>TOXICITY CHECK</title>
-                <meta name="description" content="Toxicity check main page" />
+                <meta name="description" content="Get out your toxicity and get the best score you can." />
+                <meta
+                    name="keywords"
+                    content="Toxicity, Score, IA, Toxicity Check, Toxicity Meter, Online Toxicity, Challenge"
+                />
+                <meta name="robots" content="index,follow" />
+
+                <meta property="og:title" content="Check how toxic are you online!" />
+                <meta property="og:description" content="Get out your toxicity and get the best score you can." />
+                <meta property="og:image" content="URL_de_la_imagen" />
+
+                <meta name="twitter:card" content="Check how toxic are you online!" />
+                <meta name="twitter:title" content="Check how toxic are you online!" />
+                <meta name="twitter:description" content="Get out your toxicity and get the best score you can." />
+                <meta name="twitter:image" content="URL_de_la_imagen" />
+
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-gray-400">
+            <div className="h-full">
                 <WizardStateComponent />
-            </main>
+                <button onClick={handleOnclick}>Go to about page</button>
+            </div>
         </>
     )
 }
