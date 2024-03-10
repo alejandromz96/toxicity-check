@@ -1,15 +1,23 @@
 import { useState, type FC, useEffect, type JSX } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-const DELAYS_TIMEOUTS: number[] = [0, 3000, 6000, 9000, 12000]
-const BUBBLES: number[] = [3, 0, 4, 1, 2, 4, 0, 2, 3, 0, 1, 3, 4, 1, 2, 4, 3, 0, 1, 3, 4, 1, 3, 0, 0, 2, 2, 4]
-const BUBBLES_POSITIONS: number[] = [
-    3, 3, 10, 10, 23, 23, 35, 35, 39, 39, 42, 42, 51, 51, 56, 56, 60, 60, 65, 65, 73, 73, 81, 81, 88, 97, 97,
-]
-const BUBBLES_ANIMATE_TRANSLATE: number[] = [
-    20, 20, 14, 14, 18, 18, 22, 22, 24, 24, 16, 16, 18, 18, 20, 20, 22, 22, 18, 18, 14, 14, 22, 22, 24, 24, 20, 20,
-]
-const BUBBLE_SIZE: number[] = [
-    36, 36, 28, 28, 40, 40, 24, 24, 20, 20, 32, 32, 28, 28, 36, 36, 24, 24, 20, 20, 44, 44, 16, 16, 28, 28, 36, 36,
+const DELAYS_TIMEOUTS = [0, 3000, 6000, 9000, 12000]
+const BUBBLES = [3, 0, 4, 1, 2, 4, 0, 2, 3, 0, 1, 3, 4, 1, 2, 4, 3, 0, 1, 3, 4, 1, 3, 0, 0, 2, 2, 4]
+const BUBBLES_ANIMATE_TRANSLATE = [
+    'animate-translate-top-20 left-[3%] w-36 h-36',
+    'animate-translate-top-14 left-[10%] w-28 h-28',
+    'animate-translate-top-18 left-[23%] w-40 h-40',
+    'animate-translate-top-22 left-[35%] w-24 h-24',
+    'animate-translate-top-24 left-[39%] w-20 h-20',
+    'animate-translate-top-16 left-[42%] w-32 h-32',
+    'animate-translate-top-18 left-[51%] w-28 h-28',
+    'animate-translate-top-20 left-[56%] w-36 h-36',
+    'animate-translate-top-22 left-[60%] w-24 h-24',
+    'animate-translate-top-18 left-[65%] w-20 h-20',
+    'animate-translate-top-14 left-[73%] w-44 h-44',
+    'animate-translate-top-22 left-[81%] w-16 h-16',
+    'animate-translate-top-24 left-[88%] w-28 h-28',
+    'animate-translate-top-20 left-[97%] w-36 h-36',
 ]
 
 const Background: FC = () => {
@@ -29,11 +37,14 @@ const Background: FC = () => {
         }
     }, [])
 
-    const getBubble = (delayIndex: number, bubbleIndex: number): JSX.Element | undefined =>
+    const getBubble = (delayIndex: number, index: number): JSX.Element | undefined =>
         delays[delayIndex] ? (
             <li
-                key={bubbleIndex}
-                className={`absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] animate-translate-top-${BUBBLES_ANIMATE_TRANSLATE[bubbleIndex]} rounded-full left-[${BUBBLES_POSITIONS[bubbleIndex]}%] w-${BUBBLE_SIZE[bubbleIndex]} h-${BUBBLE_SIZE[bubbleIndex]}`}
+                key={index}
+                className={twMerge(
+                    'absolute block bg-fuchsia-900 bg-opacity-15 border-solid border-fuchsia-800 border-opacity-40 border-[0.01px] rounded-full',
+                    BUBBLES_ANIMATE_TRANSLATE[Math.floor(index / 2)]
+                )}
             />
         ) : undefined
 

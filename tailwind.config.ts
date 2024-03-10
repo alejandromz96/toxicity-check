@@ -10,7 +10,7 @@ export default {
             },
             keyframes: {
                 animateTop: {
-                    '0%': { top: '-150px' },
+                    '0%': { top: '-176px' },
                     '100%': { top: '100%' },
                 },
             },
